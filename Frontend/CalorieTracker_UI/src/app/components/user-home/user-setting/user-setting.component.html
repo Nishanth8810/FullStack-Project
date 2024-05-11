@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5" routerLink="/user-dashboard">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+            Home
+          </button>
+          <button class="button-5" routerLink="/meal-plan-list">
+            <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>
+            Meal plans</button>
+          <button class="button-5" routerLink="/recipe-discover"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>
+            Discover Recipe</button>
+          <button class="button-5" routerLink="/trainer-discover">
+            <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+            Trainers</button>
+          <button class="button-5-active" routerLink="/savedRecipe">
+            <i class="fa-solid fa-bookmark" style="margin-right: 5px;"></i>
+            Saved Recipe</button>
+          <button class="button-5" routerLink="/physical-stats">
+            <i class="fa-solid fa-chart-simple" style="margin-right: 5px;"></i>
+            Physical Stats</button>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <ngx-spinner 
+      bdColor="white" color="rgb(254, 106, 65)"  
+      [fullScreen]=false  type="ball-scale-multiple"> 
+      <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+    </ngx-spinner>
+
+      <h3 class="heading" *ngIf="SavedRecipe?.length!==0">Saved Recipes</h3>
+      <h3 class="heading" *ngIf="SavedRecipe?.length===0">No Saved Recipes</h3>
+      <div class="row">
+        <div class="col-md-3" *ngFor="let item of SavedRecipe">
+          <div class="card mb-3 card-s">
+            <img [src]="item.imageUrl" alt="{{ item.name }}">
+            <div class="card-body">
+              <h3 class="card-title">{{ item.name }}</h3>
+              <button class="btn-1" (click)="deleteFromSaved(item.savedId)"><svg height="24" id="svg8" version="1.1"
+                  viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg">
+                  <defs id="defs2" />
+                  <g id="g1977" style="display:inline" transform="translate(0,-290.6502)">
+                    <path
+                      d="m 3,295.65001 c -0.55228,0 -1,0.44772 -1,1 0,0.55228 0.44772,1 1,1 h 1 v 11 c 0,2.1987 1.8013,4 4,4 h 8 c 2.1987,0 4,-1.8013 4,-4 v -11 h 1 c 0.55228,0 1,-0.44772 1,-1 0,-0.55228 -0.44772,-1 -1,-1 -6,0 -12,0 -18,0 z m 3,2 h 12 v 11 c 0,1.1253 -0.8747,2 -2,2 H 8 c -1.1253,0 -2,-0.8747 -2,-2 z"
+                      id="rect1963"
+                      style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1" />
+                    <path d="m 10,292.65039 a 1,1 0 0 0 -1,1 1,1 0 0 0 1,1 h 4 a 1,1 0 0 0 1,-1 1,1 0 0 0 -1,-1 z"
+                      id="path1972"
+                      style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1" />
+                  </g>
+                </svg></button>
+
+              <!-- You can add more details here -->
+              <h5><strong>Nutritional Information:</strong></h5>
+              <p>Calories: {{ item.nutrients.calories }} g</p>
+              <p>Carbs: {{ item.nutrients.carbs }}g</p>
+              <p>Fats: {{ item.nutrients.fats }}g</p>
+              <p>Proteins: {{ item.nutrients.proteins }}g</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

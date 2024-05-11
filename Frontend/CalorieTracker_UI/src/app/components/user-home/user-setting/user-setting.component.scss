@@ -1,0 +1,40 @@
+
+.btn-1{
+  position: absolute;
+  right: 0;
+  top:0;
+  background-color: white;
+  border: 0;
+
+}
+.heading{
+  padding: 10px;
+  font-size: xx-large;
+    color: gray;
+}
+img{
+  height: 70%;
+  width: 70%;
+  border-radius: 0%;
+  padding: 4%;
+}
+.col-md-3 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example box-shadow with a slight shadow effect */
+  // transition: box-shadow 0.3s ease; /* Optional: Add a transition effect */
+  // padding-left: 3%;
+
+}
+
+/* Optional: Add hover effect */
+.col-md-3:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adjust the shadow effect on hover */
+}
+.col-md-10{
+  position: relative;
+  height: 100vh;
+  }
+
+.col-md-10{
+  position: relative;
+  height: 100vh;
+}  

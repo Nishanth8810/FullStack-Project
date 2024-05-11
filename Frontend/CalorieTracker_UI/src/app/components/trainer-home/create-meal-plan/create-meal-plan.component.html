@@ -1,0 +1,264 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5-active" routerLink="/trainer-dashboard">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+            Home</button>
+          <button class="button-5" routerLink="/manage-clients">
+            <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+            Manage Clients</button>
+          <button class="button-5" routerLink="/recipe-add">
+            <i class="fa-solid fa-circle-plus" style="margin-right: 5px;" ></i>
+            Add custom recipe</button>
+          <button class="button-5" routerLink="/meal-plan">
+            <i class="fa-solid fa-calendar-check" style="margin-right: 5px;" ></i>
+            Meal plans</button>
+          <button class="button-5" routerLink="/login">
+            <i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i>
+            Logout</button>
+          <button class="button-5" routerLink="/trainer-setting">
+            <i class="fa-solid fa-gear"  style="margin-right: 5px;"></i>
+            Settings</button>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="container ">
+        <div class="card-body d-flex flex-column">
+          <div class="mb-3 d-flex justify-content-end align-items-center">
+            <button class="button-56" routerLink="/meal-plan">Cancel</button>
+          </div>
+          <h2 class="card-title mt-0"> Add Meal Plan</h2>
+          <form [formGroup]="mealPlanForm" class="p-4 border rounded shadow flex-grow-1">
+            <div class="mb-3 d-flex align-items-center justify-content-between">
+              <label for="name" class="form-label">Plan Name</label>
+              <div class="position-relative w-50">
+                <input type="text" formControlName="planName" id="planName" placeholder="Enter name"
+                  class="form-control" />
+                <small *ngIf="mealPlanForm.controls['planName'].dirty && mealPlanForm.hasError('required','planName')"
+                  class="text-danger ms-2">*Field is required</small>
+              </div>
+            </div>
+            <hr class="w-100 my-4">
+            <div class="mb-3 d-flex align-items-center justify-content-between">
+              <label for="name" class="form-label">For date</label>
+              <div class="position-relative w-50">
+                <input type="date" formControlName="forDate" id="forDate" placeholder="Enter name"
+                  class="form-control" />
+                <small *ngIf="mealPlanForm.controls['forDate'].dirty && mealPlanForm.hasError('required','forDate')"
+                  class="text-danger ms-2">*Field is required</small>
+              </div>
+            </div>
+            <hr class="w-100 my-4">
+            <div class="mb-3 d-flex align-items-center justify-content-between">
+              <label for="name" class="form-label">Note for Client</label>
+              <div class="position-relative w-50">
+                <input type="text" formControlName="note" id="note" placeholder="Enter Note" class="form-control" />
+                <small *ngIf="mealPlanForm.controls['note'].dirty && mealPlanForm.hasError('required','note')"
+                  class="text-danger ms-2">*Field is required</small>
+              </div>
+            </div>
+
+            <div class="mb-3 d-flex align-items-center justify-content-between">
+              <label for="selectedUser" class="form-label">Select User</label>
+              <div class="position-relative w-50">
+                <select formControlName="clientId" id="clientId" class="form-control">
+                  <option value="">Select User</option>
+                  <option *ngFor="let user of clientList" [value]="user.userId" >{{ user.userEmail }}</option>
+                </select>
+                <small *ngIf="mealPlanForm.controls['clientId'].dirty && mealPlanForm.hasError('required','clientId')"
+                  class="text-danger ms-2">*Field is required</small>
+              </div>
+            </div>
+
+            <hr class="w-100 my-4">
+            <h3>Total Calories : <span style="font-size: xx-large; color: rgb(223, 146, 146);">{{totalCalories }}</span>
+              Kcal</h3>
+            <div class="meal">
+              <div class="first">
+                <button id="forgot" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"
+                  class="btn btn-outline-warning" [ngClass]="{ 'active': MealType === 'BREAKFAST' }"
+                  (click)="addRecipe('BREAKFAST')">BREAKFAST</button>
+                <div *ngFor="let meal of mealPlanForm.get('mealsDum').controls; let i = index">
+                  <div class="ggg" *ngIf="meal.value.mealType==='BREAKFAST'">
+                    <div class="card">
+                      <img [src]="meal.value.imgUrl" alt="image">
+                      <h4>{{ meal.value.name }} </h4>
+
+                      <h3>Total calorie:{{ meal.value.calorie }} kcal</h3>
+                      <button class="btn-1" (click)="deleteMealItem(meal.value.name,meal.value.mealType )"><svg
+                          height="24" id="svg8" version="1.1" viewBox="0 0 24 24" width="24"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
+                          xmlns:dc="http://purl.org/dc/elements/1.1/"
+                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                          xmlns:svg="http://www.w3.org/2000/svg">
+                          <defs id="defs2" />
+                          <g id="g1977" style="display:inline" transform="translate(0,-290.6502)">
+                            <path
+                              d="m 3,295.65001 c -0.55228,0 -1,0.44772 -1,1 0,0.55228 0.44772,1 1,1 h 1 v 11 c 0,2.1987 1.8013,4 4,4 h 8 c 2.1987,0 4,-1.8013 4,-4 v -11 h 1 c 0.55228,0 1,-0.44772 1,-1 0,-0.55228 -0.44772,-1 -1,-1 -6,0 -12,0 -18,0 z m 3,2 h 12 v 11 c 0,1.1253 -0.8747,2 -2,2 H 8 c -1.1253,0 -2,-0.8747 -2,-2 z"
+                              id="rect1963"
+                              style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1" />
+                            <path
+                              d="m 10,292.65039 a 1,1 0 0 0 -1,1 1,1 0 0 0 1,1 h 4 a 1,1 0 0 0 1,-1 1,1 0 0 0 -1,-1 z"
+                              id="path1972"
+                              style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1" />
+                          </g>
+                        </svg></button>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="first">
+                <button id="forgot" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"
+                  class="btn btn-outline-warning" [ngClass]="{ 'active': MealType === 'LUNCH' }"
+                  (click)="addRecipe('LUNCH')">Lunch</button>
+                <div *ngFor="let meal of mealPlanForm.get('mealsDum').controls; let i = index">
+                  <div class="ggg" *ngIf="meal.value.mealType==='LUNCH'">
+                    <div class="card">
+                      <img [src]="meal.value.imgUrl" alt="image">
+                      <h4>{{ meal.value.name }} </h4>
+                      <h3>Total calorie:{{ meal.value.calorie }} kcal</h3>
+                      <button class="btn-1" (click)="deleteMealItem(meal.value.name,meal.value.mealType )"><svg
+                          height="24" id="svg8" version="1.1" viewBox="0 0 24 24" width="24"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
+                          xmlns:dc="http://purl.org/dc/elements/1.1/"
+                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                          xmlns:svg="http://www.w3.org/2000/svg">
+                          <defs id="defs2" />
+                          <g id="g1977" style="display:inline" transform="translate(0,-290.6502)">
+                            <path
+                              d="m 3,295.65001 c -0.55228,0 -1,0.44772 -1,1 0,0.55228 0.44772,1 1,1 h 1 v 11 c 0,2.1987 1.8013,4 4,4 h 8 c 2.1987,0 4,-1.8013 4,-4 v -11 h 1 c 0.55228,0 1,-0.44772 1,-1 0,-0.55228 -0.44772,-1 -1,-1 -6,0 -12,0 -18,0 z m 3,2 h 12 v 11 c 0,1.1253 -0.8747,2 -2,2 H 8 c -1.1253,0 -2,-0.8747 -2,-2 z"
+                              id="rect1963"
+                              style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1" />
+                            <path
+                              d="m 10,292.65039 a 1,1 0 0 0 -1,1 1,1 0 0 0 1,1 h 4 a 1,1 0 0 0 1,-1 1,1 0 0 0 -1,-1 z"
+                              id="path1972"
+                              style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1" />
+                          </g>
+                        </svg></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="first">
+                <button id="forgot" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"
+                  class="btn btn-outline-warning" [ngClass]="{ 'active': MealType === 'SNACK' }"
+                  (click)="addRecipe('SNACK')">Snack</button>
+                <div *ngFor="let meal of mealPlanForm.get('mealsDum').controls; let i = index">
+                  <div class="ggg" *ngIf="meal.value.mealType==='SNACK'">
+                    <div class="card">
+                      <img [src]="meal.value.imgUrl" alt="image">
+                      <h4>{{ meal.value.name }} </h4>
+                      <h3>Total calorie:{{ meal.value.calorie }} kcal</h3>
+                      <button class="btn-1" (click)="deleteMealItem(meal.value.name,meal.value.mealType )"><svg
+                          height="24" id="svg8" version="1.1" viewBox="0 0 24 24" width="24"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
+                          xmlns:dc="http://purl.org/dc/elements/1.1/"
+                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                          xmlns:svg="http://www.w3.org/2000/svg">
+                          <defs id="defs2" />
+                          <g id="g1977" style="display:inline" transform="translate(0,-290.6502)">
+                            <path
+                              d="m 3,295.65001 c -0.55228,0 -1,0.44772 -1,1 0,0.55228 0.44772,1 1,1 h 1 v 11 c 0,2.1987 1.8013,4 4,4 h 8 c 2.1987,0 4,-1.8013 4,-4 v -11 h 1 c 0.55228,0 1,-0.44772 1,-1 0,-0.55228 -0.44772,-1 -1,-1 -6,0 -12,0 -18,0 z m 3,2 h 12 v 11 c 0,1.1253 -0.8747,2 -2,2 H 8 c -1.1253,0 -2,-0.8747 -2,-2 z"
+                              id="rect1963"
+                              style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1" />
+                            <path
+                              d="m 10,292.65039 a 1,1 0 0 0 -1,1 1,1 0 0 0 1,1 h 4 a 1,1 0 0 0 1,-1 1,1 0 0 0 -1,-1 z"
+                              id="path1972"
+                              style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1" />
+                          </g>
+                        </svg></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="first">
+                <button id="forgot" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"
+                  class="btn btn-outline-warning" [ngClass]="{ 'active': MealType === 'DINNER' }"
+                  (click)="addRecipe('DINNER')">Dinner</button>
+                <div *ngFor="let meal of mealPlanForm.get('mealsDum').controls; let i = index">
+                  <div class="ggg" *ngIf="meal.value.mealType==='DINNER'">
+                    <div class="card">
+                      <img [src]="meal.value.imgUrl" alt="image">
+                      <h4>{{ meal.value.name }} </h4>
+                      <h3>Total calorie:{{ meal.value.calorie }} kcal</h3>
+                      <button class="btn-1" (click)="deleteMealItem(meal.value.name,meal.value.mealType )"><svg
+                          height="24" id="svg8" version="1.1" viewBox="0 0 24 24" width="24"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
+                          xmlns:dc="http://purl.org/dc/elements/1.1/"
+                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                          xmlns:svg="http://www.w3.org/2000/svg">
+                          <defs id="defs2" />
+                          <g id="g1977" style="display:inline" transform="translate(0,-290.6502)">
+                            <path
+                              d="m 3,295.65001 c -0.55228,0 -1,0.44772 -1,1 0,0.55228 0.44772,1 1,1 h 1 v 11 c 0,2.1987 1.8013,4 4,4 h 8 c 2.1987,0 4,-1.8013 4,-4 v -11 h 1 c 0.55228,0 1,-0.44772 1,-1 0,-0.55228 -0.44772,-1 -1,-1 -6,0 -12,0 -18,0 z m 3,2 h 12 v 11 c 0,1.1253 -0.8747,2 -2,2 H 8 c -1.1253,0 -2,-0.8747 -2,-2 z"
+                              id="rect1963"
+                              style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1" />
+                            <path
+                              d="m 10,292.65039 a 1,1 0 0 0 -1,1 1,1 0 0 0 1,1 h 4 a 1,1 0 0 0 1,-1 1,1 0 0 0 -1,-1 z"
+                              id="path1972"
+                              style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1" />
+                          </g>
+                        </svg></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="w-100 my-4">
+            <div class="button-container">
+              <button class="button-56" (click)="confirmMealPlan()">Confirm Meal Plan</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel"> <span style="font-size: 25px;font-weight:700">Add
+            Recipe</span><br>
+          <small>
+            <div class="search-container">
+              <!-- Use ngModel for two-way data binding -->
+              <input type="text" [(ngModel)]="searchQuery" name="searchQuery" placeholder="Enter recipe"
+                class="search-input" (input)="autoSearch()">
+
+            </div>
+          </small>
+        </p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+
+      <div class="recipes">
+        <div class="recipe-list">
+          <div class="recipe-item" *ngFor="let recipe of recipes">
+            <div *ngIf="recipe.unList !== 1" class="recipe-item-inner">
+              <a (click)="addRecipes(recipe.id, recipe.name, recipe.imageUrl, recipe.nutrients.calories)">
+      
+                <img  [src]="recipe.imageUrl" alt="{{ recipe.name }}">
+              </a>
+              <a (click)="addRecipes(recipe.id, recipe.name, recipe.imageUrl, recipe.nutrients.calories)">
+                <h3><strong>{{ recipe.name }}</strong></h3>
+              </a>
+              <!-- <button target="_blank" rel="noopener" [routerLink]="['/food',recipe.id]">view recipe</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

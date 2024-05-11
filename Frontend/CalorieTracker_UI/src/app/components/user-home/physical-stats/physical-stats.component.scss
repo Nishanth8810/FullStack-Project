@@ -1,0 +1,130 @@
+.custom-form {
+  background-color: #f8f9fa; 
+}
+
+.custom-form .form-label {
+  font-weight: bold; 
+}
+
+.custom-form .btn-primary {
+  background-color: #007bff; 
+  border-color: #007bff; 
+}
+
+.custom-form .btn-primary:hover {
+  background-color: #0056b3; 
+  border-color: #0056b3; 
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: 100vh;
+  margin-top: 3%;
+  position: relative;
+}
+
+.card {
+  width: 800px;
+}
+
+.card-body{
+  text-align:left;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.form-check {
+  margin-bottom: 10px;
+  border: 1px solid #007bff; /* Add blue color border */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+.form-check-input {
+  margin-right: 10px;
+  border: 1px solid #007bff;
+  margin-left: 10px;
+  
+}
+.diet-description{
+  margin-left: 33px;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end; 
+  margin-top: 20px; 
+}
+
+
+.custom-button {
+  background-color: #ff7f50; /* Change button background color to orange */
+  border-color:#ff7f50; /* Change button border color to orange */
+  height: 50px; /* Increase button height */
+}
+
+.custom-button:hover {
+  background-color: #ed5e29; /* Change button background color on hover */
+  border-color: #ed5e29; /* Change button border color on hover */
+}
+.form-select{
+  border-color: #e44e4e;
+}
+
+.form-control {
+  border-color: #e44e4e;
+}
+.custom-button.active {
+  background-color: #ed5e29; /* Change button background color for active state */
+  border-color: #ed5e29; /* Change button border color for active state */
+}
+.containe-head{
+  display: flex;
+  justify-content:space-between;
+  margin-left: 10px;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+.logo{
+
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+  color: #ff7f00;
+  margin: 0;
+}
+img{
+  height: 80px;
+  width: 80px;
+  border-radius: 0px;
+ 
+}
+.pp{
+  display: flex;
+  flex-direction: column;
+
+ 
+}
+.custom-button{
+  width: 140px;
+  margin-top: 20px;
+}
+.head{
+  display: flex;
+  justify-content: space-between;
+}
+.custom-file-upload {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #ff7300;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.col-md-10{
+  position: relative;
+  height: 100vh;
+  }

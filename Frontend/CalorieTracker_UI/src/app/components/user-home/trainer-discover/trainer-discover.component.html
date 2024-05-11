@@ -1,0 +1,60 @@
+
+<div class="container-fluid">
+ 
+<div class="row">
+  <div class="col-md-2"> 
+    <div class="sidebar custom-sidebar">
+      <ul>
+        <button class="button-5" routerLink="/user-dashboard">
+          <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+          Home
+        </button>
+        <button class="button-5" routerLink="/meal-plan-list">
+          <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>
+          Meal plans</button>
+        <button class="button-5" routerLink="/recipe-discover"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>
+          Discover Recipe</button>
+        <button class="button-5-active" routerLink="/trainer-discover">
+          <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+          Trainers</button>
+        <button class="button-5" routerLink="/savedRecipe">
+          <i class="fa-solid fa-bookmark" style="margin-right: 5px;"></i>
+          Saved Recipe</button>
+        <button class="button-5" routerLink="/physical-stats">
+          <i class="fa-solid fa-chart-simple" style="margin-right: 5px;"></i>
+          Physical Stats</button>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <ngx-spinner 
+    bdColor="white" color="rgb(254, 106, 65)"  
+    [fullScreen]=false  type="ball-scale-multiple"> 
+    <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+  </ngx-spinner>
+    <div class="card mb-3">
+      <div class="card-body" *ngFor="let trainer of Trainers ">
+       <div class="card-button">
+        <img [routerLink]="['/trainer-detail', trainer.userId]" [src]="trainer.imageUrl" alt="{{ trainer.name }}">
+        <a [routerLink]="['/trainer-detail', trainer.userId]"><h2 class="card-title">{{ trainer.firstName +"  " }}{{trainer.lastName }}</h2></a>  
+        <button class="button-88"  [routerLink]="['/trainer-detail', trainer.userId]">Connect</button>
+       </div>
+      
+        <h4 class="card-title">{{ trainer.email}}</h4>
+        <p class="card-text">{{ trainer.description }}</p>
+        <p class="card-text"><small class="text-muted">Preferred communication : {{ trainer.preferredCommunication}}</small></p>
+        <p class="card-text"><small class="text-muted">Schedule (Available) : {{ trainer.schedule}}</small></p>
+        <p class="card-text"><small class="text-muted">specializations: {{ trainer.specializations}}</small></p>
+        <hr>
+
+      </div>
+    
+    </div>
+   
+<mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[5,10,15,20]" [length]="totalItems"
+            (page)="onPageChange($event)">
+</mat-paginator>
+  </div>
+</div>  
+</div>  
+

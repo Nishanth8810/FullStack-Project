@@ -1,0 +1,54 @@
+.con{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+th{
+  
+  background-color: rgba(108, 105, 105, 0.174);
+  color: rgb(44, 43, 43);
+  
+}
+td{
+margin: 0;
+}
+.card-body{
+display: flex;
+flex-direction: row;
+}
+.card{
+  display: block;
+}
+
+.dropdown-menu {
+  list-style-type: none; /* Removes the default bullets */
+}
+.no-bullets {
+  list-style-type: none; /* Removes the default bullets */
+}
+li{
+  list-style: none;
+  
+
+}
+a{
+  text-decoration: none;
+  
+}
+.listText{
+margin: 4px;
+padding: 2px;
+color: rgb(48, 47, 47);
+
+}
+.btnn{
+  background-color: rgb(249, 249, 249);
+  border: 0cap;
+}
+tbody{
+  position: relative;
+  height: 50vh;
+}
+

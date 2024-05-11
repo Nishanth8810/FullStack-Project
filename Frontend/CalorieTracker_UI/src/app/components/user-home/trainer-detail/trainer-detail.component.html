@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5-active" routerLink="/user-dashboard">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i>
+            Home
+          </button>
+          <button class="button-5" routerLink="/meal-plan-list">
+            <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>
+            Meal plans</button>
+          <button class="button-5" routerLink="/recipe-discover"><i class="fa-solid fa-magnifying-glass"
+              style="margin-right: 5px;"></i>
+            Discover Recipe</button>
+          <button class="button-5" routerLink="/trainer-discover">
+            <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+            Trainers</button>
+          <button class="button-5" routerLink="/savedRecipe">
+            <i class="fa-solid fa-bookmark" style="margin-right: 5px;"></i>
+            Saved Recipe</button>
+          <button class="button-5" routerLink="/physical-stats">
+            <i class="fa-solid fa-chart-simple" style="margin-right: 5px;"></i>
+            Physical Stats</button>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <ngx-spinner 
+      bdColor="transparent" color="rgb(254, 106, 65)"  
+      [fullScreen]=false  type="ball-scale-multiple"> 
+      <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+    </ngx-spinner>
+      <div class="container-fluids">
+        <img [src]="trainerdata?.imageUrl">
+        <a>{{ trainerdata.firstName +" " }}{{trainerdata.lastName }}</a>
+        <h2>email : {{trainerdata.email}}</h2>
+        <p>Description : {{trainerdata.description}}</p>
+        <p> preferredCommunication :{{trainerdata.preferredCommunication}}</p>
+        <p>schedule :{{ trainerdata.schedule}}</p>
+        <p>specializations :{{trainerdata.specializations}} </p>
+        <p> yearsOfExperience :{{trainerdata.yearsOfExperience}}</p>
+        <p>MemberSince :{{trainerdata.memberSince}}</p>
+
+        <button *ngIf="requestText !== 'Message'" [disabled]="bool" class="button-61"
+          (click)="sendRequest(trainerdata.userId)">
+          {{ requestText }}
+        </button>
+        <button *ngIf="requestText === 'Message'"
+          [routerLink]="['/chat', { senderId: senderId, recipientId: trainerdata.userId }]" class="button-61">
+          {{ requestText }}
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>

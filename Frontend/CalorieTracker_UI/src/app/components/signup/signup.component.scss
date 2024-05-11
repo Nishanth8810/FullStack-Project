@@ -1,0 +1,17 @@
+.input-field {
+  // border: 2px solid transparent; /* Initially set the border to be transparent */
+  border-color: rgb(210, 210, 210);
+  border-bottom: 2px solid rgb(255, 64, 0); /* Set the border color and thickness */
+  outline:chocolate; /* Remove the default focus outline */
+  transition: border-color 0.3s ease; /* Add a smooth transition effect */
+  padding-bottom: 5px; /* Add some padding below the input text */
+}
+
+/* Style the input field when it is focused */
+.input-field:focus {
+  border-color: teal; /* Change the border color when focused */
+}
+.input-field.error{
+  border: 1px solid red;
+  color: red;
+  }

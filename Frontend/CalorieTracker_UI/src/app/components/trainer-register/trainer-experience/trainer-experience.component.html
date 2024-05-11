@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Tell us about yourself</h2>
+      <h4>This information lets us estimate you</h4>
+      <form [formGroup]="trainerDataForm" class="mt-4 p-4 border rounded shadow">
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <label for="certification" class="form-label">Certification (if any)</label>
+          <div class="position-relative w-75">
+            <input type="text" formControlName="certification" id="certification" class="form-control border" />
+
+          </div>
+        </div>
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <label for="specializations" class="form-label">Specializations</label>
+          <div class="position-relative w-75">
+            <select formControlName="specializations" id="specializations" class="form-control border">
+              <option value="">Select Specialization</option>
+              <option value="Weight Loss">Weight Loss</option>
+              <option value="Strength Training">Strength Training</option>
+              <option value="Yoga">Yoga</option>
+              <option value="Cardiovascular Conditioning">Cardiovascular Conditioning</option>
+            </select>
+            <small
+              *ngIf="trainerDataForm.controls['specializations'].dirty && trainerDataForm.hasError('required','specializations')"
+              class="text-danger ms-2">*Field is required</small>
+          </div>
+        </div>
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <label for="yearsOfExperience" class="form-label">Years of Experience</label>
+          <div class="position-relative w-75">
+            <input type="number" formControlName="yearsOfExperience" id="yearsOfExperience"
+              class="form-control border" />
+            <small
+              *ngIf="trainerDataForm.controls['yearsOfExperience'].dirty && trainerDataForm.hasError('required','yearsOfExperience')"
+              class="text-danger ms-2">*Field is required</small>
+          </div>
+        </div>
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <label for="previousEmployment" class="form-label">Previous Employment</label>
+          <div class="position-relative w-75">
+            <input type="text" formControlName="previousEmployment" id="previousEmployment"
+              class="form-control border" />
+            <small
+              *ngIf="trainerDataForm.controls['previousEmployment'].dirty && trainerDataForm.hasError('required','previousEmployment')"
+              class="text-danger ms-2">*Field is required</small>
+          </div>
+        </div>
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <label for="description" class="form-label">Description</label>
+          <div class="position-relative w-75">
+            <input type="text" formControlName="description" id="description" class="form-control border" />
+            <small
+              *ngIf="trainerDataForm.controls['description'].dirty && trainerDataForm.hasError('required','description')"
+              class="text-danger ms-2">*Field is required</small>
+          </div>
+        </div>
+
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <label for="education" class="form-label">Education</label>
+          <div class="position-relative w-75">
+            <input type="text" formControlName="education" id="education" class="form-control border" />
+            <small
+              *ngIf="trainerDataForm.controls['education'].dirty && trainerDataForm.hasError('required','education')"
+              class="text-danger ms-2">*Field is required</small>
+          </div>
+        </div>
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <label for="schedule" class="form-label">Schedule</label>
+          <div class="position-relative w-75">
+            <select formControlName="schedule" id="schedule" class="form-control border">
+              <option value="">Select Schedule</option>
+              <option value="Morning">Morning</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Evening">Evening</option>
+              <!-- Add more options as needed -->
+            </select>
+            <small *ngIf="trainerDataForm.controls['schedule'].dirty && trainerDataForm.hasError('required','schedule')"
+              class="text-danger ms-2">*Field is required</small>
+          </div>
+        </div>
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <label for="preferredCommunication" class="form-label">Preferred Communication</label>
+          <div class="position-relative w-75">
+            <select formControlName="preferredCommunication" id="preferredCommunication" class="form-control border">
+              <option value="">Select Preferred Communication</option>
+              <option value="Email">Email</option>
+              <option value="Phone Call">Phone Call</option>
+              <option value="Text Message">Text Message</option>
+              <!-- Add more options as needed -->
+            </select>
+            <small
+              *ngIf="trainerDataForm.controls['preferredCommunication'].dirty && trainerDataForm.hasError('required','preferredCommunication')"
+              class="text-danger ms-2">*Field is required</small>
+          </div>
+        </div>
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <label for="image" class="form-label">Image</label>
+          <div class="position-relative w-25">
+            <input type="file" id="image" class="form-control" (change)="onImageChange($event)" />
+            <small *ngIf="trainerDataForm.get('image')?.dirty && trainerDataForm.hasError('required','image')"
+              class="text-danger ms-2">*Image is required</small>
+          </div>
+        </div>
+      </form>
+      <div class="button-container mt-3">
+        <button class="btn btn-primary" (click)="submitTrainerData()">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>

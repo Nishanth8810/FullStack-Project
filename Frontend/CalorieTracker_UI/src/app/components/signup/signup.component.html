@@ -1,0 +1,80 @@
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+        <div class="panel border bg-white">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold">Registration</h3>
+          </div>
+          <div class="panel-body p-3">
+            <form [formGroup]="registerForm">
+              <!-- First Name -->
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="registerForm.controls['firstname'].dirty && registerForm.hasError('required', 'firstname')">
+                  <span class="fa fa-user p-2" style="color:#c85000"></span>
+                  <input formControlName="firstname" type="text" placeholder="First Name">
+                </div>
+                <small *ngIf="registerForm.controls['firstname'].dirty && registerForm.hasError('required','firstname')" class="text-danger">*Firstname is required</small>
+              </div>
+              
+              <!-- Last Name -->
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="registerForm.controls['lastname'].dirty && registerForm.hasError('required', 'lastname')">
+                  <span class="fa fa-user p-2" style="color:#c85000"></span>
+                  <input formControlName="lastname" type="text" placeholder="Last Name">
+                </div>
+                <small *ngIf="registerForm.controls['lastname'].dirty && registerForm.hasError('required','lastname')" class="text-danger">*Lastname is required</small>
+              </div>
+              
+              <!-- Email -->
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="registerForm.controls['email'].dirty && (registerForm.hasError('required', 'email') || registerForm.controls['email'].errors?.['pattern'])">
+                  <span class="fa fa-envelope p-2" style="color:#c85000"></span>
+                  <input formControlName="email" type="text" placeholder="Email">
+                </div>
+                <small *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required','email')" class="text-danger">*Email is required</small>
+                <small *ngIf="registerForm.controls['email'].errors?.['pattern']" class="text-danger">Invalid email format</small>
+              </div>
+              
+              <!-- Password -->
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="registerForm.controls['password'].dirty && (registerForm.hasError('required', 'password') || registerForm.controls['password'].hasError('passwordLength'))">
+                  <span class="fa fa-lock p-2" style="color:#c85000"></span>
+                  <input formControlName="password" [type]="type" placeholder="Password">
+                  <span (click)="hideShowPass()" class="fa {{eyeIcon}}" style="color:#c85000"></span>
+                </div>
+                <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')" class="text-danger">*Password is required</small>
+                <div *ngIf="registerForm.controls['password'].hasError('passwordLength')" class="text-danger">Password must be at least 8 characters long.</div>
+              </div>
+              
+              <!-- User Type -->
+              <div class="form-group pt-3">
+                <label>User Type:</label>
+                <div class="form-check" style="color:#c85000">
+                  <input class="form-check-input" style="color:#c85000" type="radio" name="userType" id="userTypeUser" value="user" formControlName="userType" >
+                  <label class="form-check-label"   for="userTypeUser">User</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="userType" id="userTypeTrainer" value="trainer" formControlName="userType">
+                  <label class="form-check-label" for="userTypeTrainer">Trainer</label>
+                </div>
+              </div>
+              
+              <!-- Register Button -->
+              <button (click)="onSubmit()" type="submit" class="btn custom-button btn-block mt-4 w-100" [disabled]="loading">
+                <span *ngIf="loading">&#9201;</span> 
+                <span *ngIf="!loading">Register</span>
+              </button>              
+              <div class="text-center pt-4 text-muted">Back to login?<a id="forget" routerLink="/login" style="color:#c85000">Login</a></div>
+            </form> 
+          </div>
+          <div class="mx-3 my-2 py-2 bordert">
+            <div class="text-center py-3">
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

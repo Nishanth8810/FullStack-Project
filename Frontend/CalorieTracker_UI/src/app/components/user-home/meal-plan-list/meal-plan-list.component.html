@@ -1,0 +1,64 @@
+<div class="container-fluid">
+ 
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5" routerLink="/user-dashboard">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+            Home
+          </button>
+          <button class="button-5-active" routerLink="/meal-plan-list">
+            <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>
+            Meal plans</button>
+          <button class="button-5" routerLink="/recipe-discover"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>
+            Discover Recipe</button>
+          <button class="button-5" routerLink="/trainer-discover">
+            <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+            Trainers</button>
+          <button class="button-5" routerLink="/savedRecipe">
+            <i class="fa-solid fa-bookmark" style="margin-right: 5px;"></i>
+            Saved Recipe</button>
+          <button class="button-5" routerLink="/physical-stats">
+            <i class="fa-solid fa-chart-simple" style="margin-right: 5px;"></i>
+            Physical Stats</button>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+    
+      <div class="container">
+        <ngx-spinner 
+        bdColor="white" color="rgb(254, 106, 65)"  
+        [fullScreen]=false  type="ball-scale-multiple"> 
+        <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+      </ngx-spinner>
+       
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row">
+              
+              <div class="col-md-4" *ngFor="let mealPlan of mealss">
+                <div class="card" >
+                
+                  <a [routerLink]="['/planner', mealPlan.planId]" >
+                    <div class="card-body">
+                      <h3>{{ mealPlan.planName }}</h3>
+                      <p><strong>For Date:</strong> {{ mealPlan.forDate }}</p>
+                      <p><strong>Total Calories:</strong> {{ mealPlan.totalCalories }}</p>
+                    </div>
+                  </a>
+               
+                </div>
+              </div>
+            </div>
+       
+             
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

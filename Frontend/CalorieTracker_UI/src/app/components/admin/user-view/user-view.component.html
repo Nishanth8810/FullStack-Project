@@ -1,0 +1,86 @@
+<div>
+  <app-header></app-header>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2"> 
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5" routerLink="/admin" >Home</button>  
+          <button class="button-5-active" routerLink="/user-view">Users</button>  
+          <button class="button-5" routerLink="/admin-trainer-view">Trainers</button>  
+          <button class="button-5" routerLink="/recipe-add">Add custom Recipe</button>  
+          <button class="button-5" routerLink="/recipe-manage" >Manage recipe</button>  
+          <button class="button-5" routerLink="/plan-management" >Manage plans</button>  
+          <button class="button-5">------</button>  
+        </ul>
+      </div>      
+    </div>
+    <div class="col-md-10">
+     
+      <div class="options">
+        <mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[5,10,15,20]" [length]="totalItems"
+          (page)="onPageChange($event)">
+        </mat-paginator>
+      
+        <div class="dropdown sort">
+          <button class="btn-d dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Sort Options
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+            <li><a class="dropdown-item" (click)="sortUsing('ASC')">Ascending</a></li>
+            <li><a class="dropdown-item" (click)="sortUsing('DESC')">Descending</a></li>
+          </ul>
+        </div>
+      
+        <div class="dropdown filter">
+          <button class="btn-d dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Upload Date Filter
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+            <li><a class="dropdown-item" (click)="filterByUploadDate('LAST_HOUR')">Last Hour</a></li>
+            <li><a class="dropdown-item" (click)="filterByUploadDate('TODAY')">Today</a></li>
+            <li><a class="dropdown-item" (click)="filterByUploadDate('THIS_WEEK')">This Week</a></li>
+            <li><a class="dropdown-item" (click)="filterByUploadDate('THIS_MONTH')">This Month</a></li>
+            <!-- Add more filter options as needed -->
+          </ul>
+        </div>
+      </div>
+      
+      
+    
+      <div class="container">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Block/Unblock</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ngx-spinner 
+            bdColor="white" color="rgb(254, 106, 65)"  
+            [fullScreen]=false  type="ball-scale-multiple"> 
+            <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+          </ngx-spinner>
+              <tr *ngFor="let user of content ">
+              <td>{{user.email}}</td>
+              <td>{{user.role[0].roleName}}</td>
+              <td>
+                <button *ngIf="user.active === 0 && user.role[0].roleName !== 'ADMIN'" (click)="unblock(user.email)" class="btn btn-danger btn-sm">Unblock</button>
+                <button *ngIf="user.active === 1 && user.role[0].roleName !== 'ADMIN'" (click)="block(user.email)" class="btn btn-primary btn-sm">Block</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+   
+    </div>
+  </div>
+</div>
+
+
+
+</div>

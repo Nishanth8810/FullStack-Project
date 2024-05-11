@@ -1,0 +1,22 @@
+<div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+
+  <div class="chat-container">
+    <div class="chat-message" *ngFor="let message of chatMessages">
+      <p class="message-sender">
+        <span *ngIf="message.senderId === senderId; else otherSender" [style.color]="'blue'">{{ 'You' }}</span>
+        <ng-template #otherSender><span [style.color]="'red'">{{ message.senderId }}</span></ng-template>
+      </p>
+      <div class="mess">
+        <p class="message-content">{{ message.content }}</p>
+        <div class="message-timestamp">{{ message.timestamp | date: 'shortTime' }}</div>
+      </div>
+    
+    </div>
+  </div>
+  
+
+<div class="message-input">
+  <input type="text" [(ngModel)]="newMessage" placeholder="Type your message here...">
+  <button (click)="sendMessage()">Send</button>
+</div>
+</div>

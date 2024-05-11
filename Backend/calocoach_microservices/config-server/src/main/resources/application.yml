@@ -1,0 +1,18 @@
+server:
+  port: 9296
+spring:
+  application:
+    name: CONFIG-SERVER
+  profile:
+    active: native
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Nishanth8810/config-server
+          skip: true
+          validation: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://3.109.246.230:8761/eureka/

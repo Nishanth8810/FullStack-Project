@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="meal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20"
+              rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+    <style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+    <style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+    <style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+    <style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+    <style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+        <conditionalStyle>
+            <conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+            <style mode="Opaque" backcolor="#F0EFEF"/>
+        </conditionalStyle>
+    </style>
+    <parameter name="title" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="id1" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="name1" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="id2" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="name2" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="id3" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="name3" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="id4" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="name4" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="id5" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="name5" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="id6" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="name6" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="id7" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="name7" class="java.lang.String" isForPrompting="false"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="102" splitType="Stretch">
+            <image>
+                <reportElement x="725" y="0" width="77" height="102" uuid="651ccc4b-e999-40fe-bcbf-1f25bcfc98af"/>
+                <imageExpression><![CDATA[]]></imageExpression>
+            </image>
+            <frame>
+                <reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000"
+                               uuid="d8d9e644-3a32-491d-97cb-a277aff17133"/>
+                <staticText>
+                    <reportElement style="Title" x="0" y="0" width="370" height="66"
+                                   uuid="27d8f6ee-f0a9-44f6-a160-1763c3b00f30"/>
+                    <box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+                    <textElement verticalAlignment="Bottom">
+                        <font isBold="false"/>
+                    </textElement>
+                    <text><![CDATA[CaloCoach]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement style="SubTitle" x="370" y="37" width="316" height="29"
+                                   uuid="cfa21334-0634-4605-9ea7-aca4981f67e4"/>
+                    <textElement textAlignment="Right">
+                        <font size="22" isBold="false"/>
+                    </textElement>
+                    <text><![CDATA[Meal Plan]]></text>
+                </staticText>
+            </frame>
+            <frame>
+                <reportElement mode="Opaque" x="0" y="66" width="721" height="32" forecolor="#000000"
+                               backcolor="#CC0000" uuid="b0c895f6-6dbd-477d-9858-9ad66af087e1"/>
+                <textField pattern="EEEEE dd MMMMM yyyy">
+                    <reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF"
+                                   uuid="a33fce3b-20c1-4696-873a-fe134d1e7d88"/>
+                    <textElement textAlignment="Right">
+                        <font size="12"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+                </textField>
+            </frame>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement x="2" y="0" width="198" height="20" uuid="5a899bcb-ac7b-400d-95c4-71de22f5fc11"/>
+                <box>
+                    <pen lineWidth="1.0" lineColor="#000000"/>
+                </box>
+                <textFieldExpression><![CDATA[$P{id1}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement x="200" y="0" width="510" height="20" uuid="f80b0408-7e5d-41b1-96a1-19d77b470b4b"/>
+                <box>
+                    <pen lineWidth="1.0" lineColor="#000000"/>
+                </box>
+                <textFieldExpression><![CDATA[$P{name1}]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="20" splitType="Stretch">
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement x="2" y="0" width="198" height="20" uuid="da369076-0593-4a7a-84b9-c3d8f1113c39"/>
+                <box>
+                    <pen lineWidth="1.0" lineColor="#000000"/>
+                </box>
+                <textFieldExpression><![CDATA[$P{id2}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement x="200" y="0" width="510" height="20" uuid="95cae564-0f14-4d2d-bbe7-dc95c3807a74"/>
+                <box>
+                    <pen lineWidth="1.0" lineColor="#000000"/>
+                </box>
+                <textFieldExpression><![CDATA[$P{name2}]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="20" splitType="Stretch">
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement x="2" y="0" width="198" height="20" uuid="deebc919-8fe6-400b-8b4f-651228458922"/>
+                <box>
+                    <pen lineWidth="1.0" lineColor="#000000"/>
+                </box>
+                <textFieldExpression><![CDATA[$P{id3}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement x="200" y="0" width="510" height="20" uuid="7fed2733-e88f-4fac-98e2-5cbf0fab4bcf"/>
+                <box>
+                    <pen lineWidth="1.0" lineColor="#000000"/>
+                </box>
+                <textFieldExpression><![CDATA[$P{name3}]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="20" splitType="Stretch">
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement x="0" y="0" width="200" height="20" uuid="59be61c3-71b3-4492-a951-8d37d026d6bc"/>
+                <box>
+                    <pen lineWidth="1.0" lineColor="#000000"/>
+                </box>
+                <textFieldExpression><![CDATA[$P{id4}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement x="200" y="0" width="510" height="20" uuid="abe0982d-3790-412b-8b19-1bc679433ea4"/>
+                <box>
+                    <pen lineWidth="1.0" lineColor="#000000"/>
+                </box>
+                <textFieldExpression><![CDATA[$P{name4}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="7" splitType="Stretch">
+            <line>
+                <reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"
+                               uuid="501ac6c4-e9d4-43cb-ba6b-7f2f44394cf3"/>
+                <graphicElement>
+                    <pen lineWidth="0.5" lineColor="#999999"/>
+                </graphicElement>
+            </line>
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band height="25" splitType="Stretch">
+            <frame>
+                <reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000"
+                               uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0"/>
+                <textField evaluationTime="Report">
+                    <reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF"
+                                   uuid="b5521ea6-5f36-4864-856f-58d0bcd011f2"/>
+                    <textElement verticalAlignment="Middle">
+                        <font size="10" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF"
+                                   uuid="e625ea3c-1741-4cfe-81cf-fbbdd00162c8"/>
+                    <textElement textAlignment="Right" verticalAlignment="Middle">
+                        <font size="10" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+                </textField>
+                <textField pattern="EEEEE dd MMMMM yyyy">
+                    <reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF"
+                                   uuid="0c9f7e91-d3f5-47f9-82b7-0b2b3a43a5d6"/>
+                    <textElement verticalAlignment="Middle">
+                        <font size="10" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+                </textField>
+            </frame>
+        </band>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>

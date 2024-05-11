@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: 100vh;
+  margin-top: 3%;
+  position: relative;
+}
+
+.card {
+  border: 1px solid#ff7f50;
+  width: 800px;
+}
+
+.card-body{
+  text-align:left;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+/* your-component.component.css */
+
+/* Style for form labels */
+.form-group label {
+  font-weight: bold; /* Make labels bold */
+}
+.form-check {
+  margin-left: 22px;
+  margin-bottom: 10px;
+  border: 1px solid#ff7f50; 
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+/* Style for checkboxes */
+.form-check-input {
+  margin-top: 0.4rem; /* Adjust top margin for checkboxes */
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end; 
+  margin-top: 20px; 
+}
+.form-check-input{
+  border-color:black;
+}
+
+.custom-button {
+  background-color: #ff7f50; /* Change button background color to orange */
+  border-color:#ff7f50; /* Change button border color to orange */
+  height: 50px; /* Increase button height */
+}
+
+.custom-button:hover {
+  background-color: #ed5e29; /* Change button background color on hover */
+  border-color: #ed5e29; /* Change button border color on hover */
+}
+
+
+.custom-button.active {
+  background-color: #ed5e29; /* Change button background color for active state */
+  border-color: #ed5e29; /* Change button border color for active state */
+}
+.containe-head{
+  display: flex;
+  justify-content:space-between;
+  margin-left: 10px;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+.logo{
+
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+  color: #ff7f00;
+  margin: 0;
+}

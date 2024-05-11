@@ -1,0 +1,101 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2"> 
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5" routerLink="/user-dashboard">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+            Home
+          </button>
+          <button class="button-5" routerLink="/meal-plan-list">
+            <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>
+            Meal plans</button>
+          <button class="button-5" routerLink="/recipe-discover"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>
+            Discover Recipe</button>
+          <button class="button-5" routerLink="/trainer-discover">
+            <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+            Trainers</button>
+          <button class="button-5" routerLink="/savedRecipe">
+            <i class="fa-solid fa-bookmark" style="margin-right: 5px;"></i>
+            Saved Recipe</button>
+          <button class="button-5" routerLink="/physical-stats">
+            <i class="fa-solid fa-chart-simple" style="margin-right: 5px;"></i>
+            Physical Stats</button>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <ngx-spinner 
+      bdColor="transparent" color="rgb(254, 106, 65)"  
+      [fullScreen]=false  type="ball-scale-multiple"> 
+      <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+    </ngx-spinner>
+   <nav>
+  <h2 *ngIf="recipeData" class="heading">{{  recipeData.name }}</h2>
+  </nav>
+  <div *ngIf="recipeData" class="food-view-container">
+  <!-- Left side -->
+
+  <div class="left-side">
+    <img [src]="imageUrl" alt="{{ imageUrl }} ">
+ 
+    <div class="action-buttons">
+      <button class="custom-button" [disabled]="savetext==='saved'" (click)="saveRecipe(recipeData.id)">{{savetext}}</button>
+      <button class="custom-button">Like</button>
+      <button id="forgot" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="reasonForReport==='reported'" class="custom-button" >Report</button>
+      <!-- <button class="custom-button" (click)="reportRecipe(recipeData.id)">Report</button> -->
+    </div>
+    <div class="container-time">
+      <div>
+        <strong>Prep Time:</strong> {{ recipeData.prepTimeMinutes }} minutes
+      </div> 
+        <strong>Cook Time:</strong> {{ recipeData.cookTimeMinutes }} minutes
+      </div>
+  </div>
+
+
+  <div class="right-side">
+   
+    <h3><strong>Nutritional Information:</strong></h3>
+    <p>Calories: {{ recipeData.nutrients.calories }} g</p>
+    <p>Carbs: {{ recipeData.nutrients.carbs }}g</p>
+    <p>Fats: {{ recipeData.nutrients.fats }}g</p>
+    <p>Proteins: {{ recipeData.nutrients.proteins }}g</p>
+    <h3><strong>Ingredients:</strong></h3>
+    <ul>
+      <li *ngFor="let ingredient of recipeData.ingredients">{{ ingredient.name }}</li>
+    </ul>
+    <div class="container">
+      <h3><strong>Directions:</strong></h3>
+      <ol>
+        <li *ngFor="let direction of recipeData.directionList">{{ direction.directions }}</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+  </div>
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <p class="modal-title" id="exampleModalLabel"> <span style="font-size: 25px;font-weight:700">Report Recipe?</span><br>
+                  <small>please enter a reason for this report</small></p>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="form-group pt-3">
+                  <div class="input-field">  <input type="text"  [(ngModel)]="reasonForReport"   placeholder="Enter Reason"> </div>
+              </div>
+           
+          </div>
+          <div class="modal-footer">
+              <button id="closeBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" (click)="confirmToSend(recipeData.id); "   class="btn btn-secondary">report</button>
+          </div>
+      </div>
+  </div>
+</div> 

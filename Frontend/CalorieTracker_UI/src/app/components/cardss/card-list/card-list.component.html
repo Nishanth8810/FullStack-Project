@@ -1,0 +1,29 @@
+<!-- <div *ngFor="let card of cards">
+  <app-card [card]="card"></app-card>
+</div> -->
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">Block/Unblock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let user of content | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"> -->
+    <tr *ngFor="let user of cards ">
+      <td>{{user.email}}</td>
+      <!-- <td>{{user.role[0].roleName}}</td> -->
+      <!-- <td>
+        <button *ngIf="user.active === 0 && user.role[0].roleName !== 'ADMIN'" (click)="unblock(user.email)"
+          class="btn btn-danger btn-sm">Unblock</button>
+        <button *ngIf="user.active === 1 && user.role[0].roleName !== 'ADMIN'" (click)="block(user.email)"
+          class="btn btn-primary btn-sm">Block</button>
+      </td> -->
+    </tr>
+  </tbody>
+</table>
+
+<mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[5,10,15,20]" [length]="totalItems"
+  (page)="onPageChange($event)">
+</mat-paginator>

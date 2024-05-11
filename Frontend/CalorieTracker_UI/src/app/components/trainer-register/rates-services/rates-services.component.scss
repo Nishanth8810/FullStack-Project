@@ -1,0 +1,86 @@
+// .container {
+//   // background-image: url('https://hha.hitachi-hightech.com/assets/components/phpthumbof/cache/XRF_for_food_X_MET8000.518ac42faaa0be7917a503517dc405e0.png');
+//   // background-size: cover;
+//   // background-position: right;
+//   // padding: 50px;
+  
+// }
+
+.content {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.divider {
+  border-top: 1px solid black;
+  margin: 60px 0;
+}
+.container-1 {
+  text-align: center;
+}
+
+.custom-select {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  color: #495057;
+  padding: 0.5rem;
+}
+
+.custom-select:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.card-title {
+  background-color: #f8d7da; /* Red background color for Control */
+  color: #721c24; /* Dark red text color */
+  padding: 10px; /* Add padding for better appearance */
+}
+
+.card-subtitle {
+  color: #721c24; /* Dark red text color */
+}
+
+.card-body {
+  background-color: #fff; /* White background color for card body */
+  border: 1px solid #f8d7da; /* Red border for card body */
+}
+
+.btn1{
+  background-color: rgb(255, 81, 0);
+}
+.te{
+  background-color: #495057;
+}

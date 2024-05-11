@@ -1,0 +1,150 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5" routerLink="/trainer-dashboard">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+            Home</button>
+          <button class="button-5" routerLink="/manage-clients">
+            <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+            Manage Clients</button>
+          <button class="button-5" routerLink="/recipe-add">
+            <i class="fa-solid fa-circle-plus" style="margin-right: 5px;" ></i>
+            Add custom recipe</button>
+          <button class="button-5-active" routerLink="/meal-plan">
+            <i class="fa-solid fa-calendar-check" style="margin-right: 5px;" ></i>
+            Meal plans</button>
+          <button class="button-5" routerLink="/login">
+            <i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i>
+            Logout</button>
+          <button class="button-5" routerLink="/trainer-setting">
+            <i class="fa-solid fa-gear"  style="margin-right: 5px;"></i>
+            Settings</button>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="head">
+        <div>
+          <h2>Meal plans</h2>
+        </div>
+        <div>
+          <div class="button-56" routerLink="/create-mealPlan">
+            Create meal plan
+          </div>
+        </div>
+      </div>
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search by plan name" class="form-control mb-3 search-box"
+      (input)="filterPlans()">
+      <!-- <div class="dropdown sort">
+        <button class="btn-d dropdown-toggle custom-button" type="button" id="sortDropdown" data-bs-toggle="dropdown"
+                aria-expanded="false">
+          Sort Options
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+          <li><a class="dropdown-item" (click)="sortUsing('ASC')">Ascending</a></li>
+          <li><a class="dropdown-item" (click)="sortUsing('DESC')">Descending</a></li>
+        </ul>
+      </div> -->
+      <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">User</th>
+                <th scope="col">Title</th>
+                <th scope="col">For date</th>
+                <th scope="col">Total Calories</th>
+                <th scope="col">Created</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+          <ngx-spinner 
+          bdColor="white" color="rgb(254, 106, 65)"  
+          [fullScreen]=false  type="ball-scale-multiple"> 
+          <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+        </ngx-spinner>
+            <tr *ngFor="let plan of Plans">
+                <td>{{ plan.userEmail }}</td>
+                <td>{{ plan.planName }}</td>
+                <td>{{ plan.forDate }}</td>
+                <td>{{ plan.totalCalories }} Kcal</td>
+                <td>{{ plan.created }}</td>
+                <!-- <td>
+                    <p *ngIf="plan.planName === null">No meal plan yet</p>
+                    <p *ngIf="plan.planName !== null">{{ plan.planName }}</p>
+                </td> -->
+                <td>
+                  <li class="dropdown">
+                    <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <div class="button-613">Actions</div>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li class="listText" >
+                        <button class="btnn" routerLink="/create-mealPlan">Create new meal plan</button>
+                        
+                      </li>
+                      <li class="listText" >
+                        <button class="btnn"  (click)="deleteMealPlan(plan.planId)">Delete this plan</button>
+                        
+                      </li>
+                      <li class="listText" >
+                        <button id="forgot" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getMeal(plan.planId)"  class="btnn">View plan</button>
+                        
+                      </li>
+                      
+                      <li class="listText" >
+                        <button class="btnn" (click)="stopManaging(plan.userId)">Stop managing</button>
+                      </li>
+                    </ul>
+                  </li>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+     </div>
+     </div>
+     </div>
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title" id="exampleModalLabel"> <span style="font-size: 25px;font-weight:700">Meal plan
+              </span><br>
+              <small>
+               
+              </small>
+            </p>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    
+          </div>
+    
+          <div class="content">
+            <div>
+              <div  *ngIf="mealss!==undefined" class="card">
+                <div *ngFor="let meal of mealss.meals">
+                  <h2>{{ meal.mealType }}</h2>
+                  <ul>
+                    <li *ngFor="let item of meal.mealItems">
+                      <div class="imgCon">
+                        <a >
+                          <img [src]="'assets' +  item.imageUrl" alt="image">
+                        </a>
+                        <h3><strong> {{ item.name }} </strong> </h3>
+                      </div>
+                        <div style="margin-left: 50x;">
+                          <h3>Total calorie : {{ item.nutrients.calories }}  kcal</h3>
+                        </div>
+                    </li>
+                  </ul>
+                  <hr class="w-100 my-4">
+                </div>
+              </div>
+             
+            </div>
+          </div>
+    
+    
+        </div>
+      </div>
+    </div>

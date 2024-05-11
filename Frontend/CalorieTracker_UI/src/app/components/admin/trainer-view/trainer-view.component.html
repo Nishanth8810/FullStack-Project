@@ -1,0 +1,70 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5" routerLink="/admin">Home</button>
+          <button class="button-5" routerLink="/user-view">Users</button>
+          <button class="button-5-active" routerLink="/admin-trainer-view">Trainers</button>
+          <button class="button-5" routerLink="/recipe-add">Add custom Recipe</button>
+          <button class="button-5" routerLink="/recipe-manage">Manage recipe</button>
+          <button class="button-5" routerLink="/plan-management">Manage plans</button>
+          <button class="button-5">------</button>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10">
+
+      <div class="options">
+        <mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[5,10,15,20]" [length]="totalItems"
+          (page)="onPageChange($event)">
+        </mat-paginator> 
+      
+        <div class="dropdown sort">
+          <button class="btn-d dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Sort Options
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+            <li><a class="dropdown-item" (click)="sortUsing('ASC')">Ascending</a></li>
+            <li><a class="dropdown-item" (click)="sortUsing('DESC')">Descending</a></li>
+          </ul>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Email</th>
+            <th scope="col">Plan Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Specialization</th>
+            <th scope="col">Description</th>
+            <th scope="col">Schedule</th>
+            <th scope="col">Block/Unblock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ngx-spinner 
+          bdColor="white" color="rgb(254, 106, 65)"  
+          [fullScreen]=false  type="ball-scale-multiple"> 
+          <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+        </ngx-spinner>
+          <tr *ngFor="let user of Trainers ">
+            <td>{{user.email}}</td>
+            <td>{{user.planName}}</td>
+            <td>{{user.amount}}</td>
+            <td>{{user.specializations}}</td>
+            <td>{{user.description}}</td>
+            <td>{{user.schedule}}</td>
+            <td>
+              <button *ngIf="user.active === 0 " (click)="unblock(user.email)" class="button-61">Unblock</button>
+              <button *ngIf="user.active === 1 " (click)="block(user.email)" class="button-61">Block</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+ 
+</div>

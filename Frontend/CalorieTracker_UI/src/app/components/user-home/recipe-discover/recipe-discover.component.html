@@ -1,0 +1,76 @@
+<div class="row">
+
+  <div class="col-md-2"> 
+    <div class="sidebar custom-sidebar">
+      <ul>
+        <button class="button-5" routerLink="/user-dashboard">
+          <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+          Home
+        </button>
+        <button class="button-5" routerLink="/meal-plan-list">
+          <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>
+          Meal plans</button>
+        <button class="button-5-active" routerLink="/recipe-discover"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>
+          Discover Recipe</button>
+        <button class="button-5" routerLink="/trainer-discover">
+          <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+          Trainers</button>
+        <button class="button-5" routerLink="/savedRecipe">
+          <i class="fa-solid fa-bookmark" style="margin-right: 5px;"></i>
+          Saved Recipe</button>
+        <button class="button-5" routerLink="/physical-stats">
+          <i class="fa-solid fa-chart-simple" style="margin-right: 5px;"></i>
+          Physical Stats</button>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <nav>
+      <div class="container-fluid">
+        <div class="heading-recipe-discover">
+          <div class="search-container">
+            <input type="text" [(ngModel)]="searchQuery" name="searchQuery" placeholder="Enter recipe" class="search-input" (input)="autoSearch()">
+            <button type="button" class="toggle-button" (click)="toggleCalorieFilter()"><i class="fa-solid fa-filter"></i></button>
+          </div>
+          
+          <div *ngIf="showCalorieFilter" class="calorie-range-container">
+            <label for="calorieRange">Calorie Range:</label>
+            <input type="range" id="calorieRange" [(ngModel)]="calorieRange" name="calorieRange" min="0" max="1000" step="10" >
+            <span class="calorie-range">{{ calorieRange }}</span> 
+            <button type="button" class="custom-button" (click)="filterByCalorie()">Filter</button>
+          </div>
+       
+        </div>
+      </div>
+    </nav>
+    
+    
+
+    <div class="container">
+
+
+    <ngx-spinner 
+      bdColor="transparent" color="rgb(254, 106, 65)"  
+      [fullScreen]=false  type="ball-scale-multiple"> 
+      <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+    </ngx-spinner>
+
+      <div class="recipe-container">
+      
+        <div class="recipe-item" *ngFor="let recipe of recipes">
+          <div *ngIf="recipe.unList !== 1">
+            <a (click)="viewRecipe(recipe.id)">
+              <img [src]="recipe.imageUrl" alt="{{ recipe.name }}">
+            </a>
+            <a (click)="viewRecipe(recipe.id)">
+              <h3><strong>{{ recipe.name }}</strong></h3>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[5,10,15,20]" [length]="totalItems"
+(page)="onPageChange($event)">
+</mat-paginator>
+</div>

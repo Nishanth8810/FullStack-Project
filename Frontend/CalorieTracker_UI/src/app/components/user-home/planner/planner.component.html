@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5" routerLink="/user-dashboard">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+            Home
+          </button>
+          <button class="button-5" routerLink="/meal-plan-list">
+            <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>
+            Meal plans</button>
+          <button class="button-5" routerLink="/recipe-discover"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>
+            Discover Recipe</button>
+          <button class="button-5" routerLink="/trainer-discover">
+            <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+            Trainers</button>
+          <button class="button-5" routerLink="/savedRecipe">
+            <i class="fa-solid fa-bookmark" style="margin-right: 5px;"></i>
+            Saved Recipe</button>
+          <button class="button-5" routerLink="/physical-stats">
+            <i class="fa-solid fa-chart-simple" style="margin-right: 5px;"></i>
+            Physical Stats</button>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10">
+ <div class="container">
+      <div class="head">
+        <div class="day">
+            <h2>Plan for {{ mealss.forDate }}</h2>
+            <h2>Total Calories {{ mealss.totalCalories}} Kcal</h2>
+        </div>
+        <div class="cal">
+          <!-- calorie -->
+        </div>
+      </div>
+
+      <div class="content">
+        <div>
+          <div class="card">
+            <div *ngFor="let meal of mealss.meals">
+              <h2>{{ meal.mealType }}</h2>
+              <ul>
+                <li *ngFor="let item of meal.mealItems">
+                  <div class="imgCon">
+                    <a target="_blank" rel="noopener" [routerLink]="['/food',item.recipeId]" >
+                      <img [src]="item.imageUrl" alt="image">
+                    </a>
+                    <h3><strong> {{ item.name }} </strong> </h3>
+                  </div>
+                    <div style="margin-left: 50x;">
+                      <h3>Total calorie : {{ item.nutrients.calories }}  kcal</h3>
+                    </div>
+                </li>
+              </ul>
+              <hr class="w-100 my-4">
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>

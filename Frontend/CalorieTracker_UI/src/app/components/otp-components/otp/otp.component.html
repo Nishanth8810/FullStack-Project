@@ -1,0 +1,30 @@
+<!-- <div class="container"> -->
+  <div class="card">
+    <div class="header">
+      <h4 class="logo">CalorieCoach</h4>
+      <h1 class="user"> <span class="fa fa-user p-2"></span>{{ email }}</h1>
+    </div>
+    <div class="content">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="inner-card">
+            <div class="inner-card-header">
+              <h4>Enter OTP</h4>
+            </div>
+            <div class="inner-card-body">
+              <form [formGroup]="otpForm">
+                <div class="form-group  w-100">
+                  <label for="otp">OTP:</label>
+                  <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
+                </div>
+                <button (click)="submitOTP()" type="submit" class="btn btn-primary col-md-4 ">Submit</button>
+                <button (click)="resendOtp()" *ngIf="timer==121" [disabled]="timer!=121" type="submit" class="btn btn-secondary">Resend OTP</button>
+                <div class="timer">OTP resend available in :{{ formatTime() }}</div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- </div> -->

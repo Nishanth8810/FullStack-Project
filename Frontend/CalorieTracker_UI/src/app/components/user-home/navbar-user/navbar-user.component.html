@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CalorieCoach</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav span-s ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img [src]="imgUrl" alt="{{ imgUrl }}" style="width: 40px; height: 40px;">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" (click)="logout()">
+                <i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i> Logout
+              </a>
+            </li>
+            
+            <li><a class="dropdown-item" routerLink="/savedRecipe"><i class="fa-solid fa-bookmark" style="margin-right: 5px;"></i>Saved Recipe</a></li>
+            <li><a class="dropdown-item" routerLink="/user"><i class="fa-solid fa-gear"  style="margin-right: 5px;"></i>Settings</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,66 @@
+li{
+  list-style: none;
+  
+
+}
+a{
+  text-decoration: none;
+  
+}
+.listText{
+margin: 4px;
+padding: 2px;
+color: rgb(48, 47, 47);
+
+}
+.btnn{
+  background-color: rgb(249, 249, 249);
+  border: 0cap;
+}
+.head{
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.button-56{
+  width: 150px;
+  font-size: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.head{
+  display: flex;
+  gap: 30px;
+}
+
+.card{
+  padding: 10px;
+}
+.imgCon{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+img{
+  height: 60px;
+  width: 60px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+li{
+  list-style: none;
+}
+
+
+/* Styles for the search box */
+.search-box {
+  margin-bottom: 20px;
+  max-width: 300px;
+}
+
+tbody{
+  position: relative;
+  height: 50vh;
+}

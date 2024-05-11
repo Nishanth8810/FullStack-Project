@@ -1,0 +1,43 @@
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+a{
+  color: rgb(218, 79, 45);
+  text-decoration: none;
+}
+
+p{
+  margin: 0;
+}
+.card-button{
+  display: flex;
+  justify-content:space-between;
+}
+
+.cb{
+  padding: 10px;
+}
+
+mat-paginator {
+  background-color: rgb(215, 116, 92); 
+  
+}
+img{
+  height: 70px;
+  width: 80px;
+  border-radius: 3px;
+}
+.col-md-9{
+  position: relative;
+  // width: 80vw;
+  height: 100vh;
+  }

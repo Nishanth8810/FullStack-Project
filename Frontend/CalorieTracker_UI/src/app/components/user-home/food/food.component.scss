@@ -1,0 +1,106 @@
+.food-view-container {
+  display: flex;
+  padding-top: 80px;
+  margin-bottom: 100px;
+  background-color: #fff; /* Add a background color */
+  border-radius: 12px; /* Rounded corners */
+  // box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.row{
+  margin-right: 0px;
+}
+
+.left-side {
+
+  padding: 20px;
+}
+
+.right-side {
+  // width: 35%;
+  padding: 20px;
+}
+
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.save-button,
+.like-button,
+.block-button {
+  margin-right: 10px;
+}
+img{
+width: 80%;
+height: 50%;  
+border-radius: 8px;
+}
+nav {
+  background-color: rgba(169, 90, 56, 0.463);
+  height: 80px;
+  position: fixed; 
+  width: 100%; 
+  top: 0; 
+  z-index: 1000; 
+}
+.heading {
+  font-size: 28px; /* Increase font size for headings */
+  color: #333; /* Darker text color */
+  padding: 20px; /* Adjust padding for spacing */
+}
+
+.container-time{
+padding: 20px;
+height: max-content;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  font-size: 16px;
+  padding: 10px;
+}
+
+ol,ul{
+  font-size: 16px;
+}
+li{
+  margin-bottom: 5px;
+}
+
+button {
+  font-size: 16px;
+  // padding: 10px 20px;
+}
+
+
+h2,
+h3 {
+  font-size: 24px;
+}
+
+
+p {
+  font-size: 18px;
+}
+.ggg{
+  display: flex;
+}
+.col-md-2{
+  padding: 0;
+}
+.sidebar {
+  padding:0 ;
+}
+.custom-sidebar{
+  padding:0;
+}
+
+
+.col-md-8{
+  position: relative;
+  height: 100vh;
+  
+}

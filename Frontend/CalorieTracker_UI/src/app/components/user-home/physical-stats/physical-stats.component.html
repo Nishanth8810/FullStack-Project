@@ -1,0 +1,163 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5" routerLink="/user-dashboard">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+            Home
+          </button>
+          <button class="button-5" routerLink="/meal-plan-list">
+            <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>
+            Meal plans</button>
+          <button class="button-5" routerLink="/recipe-discover"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>
+            Discover Recipe</button>
+          <button class="button-5" routerLink="/trainer-discover">
+            <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+            Trainers</button>
+          <button class="button-5" routerLink="/savedRecipe">
+            <i class="fa-solid fa-bookmark" style="margin-right: 5px;"></i>
+            Saved Recipe</button>
+          <button class="button-5-active" routerLink="/physical-stats">
+            <i class="fa-solid fa-chart-simple" style="margin-right: 5px;"></i>
+            Physical Stats</button>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <ngx-spinner 
+      bdColor="white" color="rgb(254, 106, 65)"  
+      [fullScreen]=false  type="ball-scale-multiple"> 
+      <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+    </ngx-spinner>
+    <div class="containe">
+    
+  <div class="card">
+    <div class="containe-head">
+      <h4 class="logo">CalorieCoach</h4>
+    </div>
+    <div class="card">
+      <form [formGroup]="userDataForm" >
+      <div class="card-body">
+        <h2 class="card-title">Physical stats</h2>
+        <div class="head mt-4 p-4 border rounded shadow">
+          <div class="pp">
+            <img [src]="imgUrl" alt="{{ imgUrl }}">
+            <div>
+            <label for="image" class="custom-file-upload">
+             Change Profile Image
+              <input type="file" id="image" style="display: none;" (change)="onImageChange($event)" />
+            </label>
+          </div>
+          </div>
+           <div>
+            <div class="mb-2 d-flex align-items-center justify-content-between">
+              <label for="weight" class="form-label">First Name</label>
+              <div class="position-relative w-100">
+                <input type="text" formControlName="firstname" id="firstname" class="form-control" />
+                <small *ngIf="userDataForm.controls['firstname'].dirty && userDataForm.hasError('required','firstname')"
+                  class="text-danger ms-2">*Field is required</small>
+              </div>
+            </div>
+            <div class="mb-2 d-flex align-items-center justify-content-around">
+              <label for="lastname" class="form-label">LastName</label>
+              <div class="position-relative w-100">
+                <input type="text" formControlName="lastname" id="lastname" class="form-control" />
+                <small *ngIf="userDataForm.controls['lastname'].dirty && userDataForm.hasError('required','lastname')"
+                  class="text-danger ms-2">*Field is required</small>
+              </div>
+            </div>
+            <div class="">
+              <label for="lastname" class="form-label">BodyMassIndex</label>
+            <p>{{bmi}}</p>
+            </div>
+            <!-- <div class="mb-2 d-flex align-items-center justify-content-between">
+              <label for="weight" class="form-label">Email</label>
+              <div class="position-relative w-100">
+                <input type="text" formControlName="email" id="weight" class="form-control" />
+                <small *ngIf="userDataForm.controls['email'].dirty && userDataForm.hasError('required','email')"
+                  class="text-danger ms-2">*Field is required</small>
+              </div>
+            </div> -->
+          </div> 
+          </div>
+        </div>
+
+          <div class="mt-4 p-4 border rounded shadow">
+
+         
+          <div class="mb-3 d-flex align-items-center justify-content-between">
+            <label for="weight" class="form-label">Weight (in cm)</label>
+            <div class="position-relative w-75">
+              <input type="number" formControlName="weight" id="weight" class="form-control" />
+              <small *ngIf="userDataForm.controls['weight'].dirty && userDataForm.hasError('required','weight')"
+                class="text-danger ms-2">*Field is required</small>
+            </div>
+          </div>
+          <div class="mb-3 d-flex align-items-center justify-content-between">
+            <label for="height" class="form-label">Height (in cm)</label>
+            <div class="position-relative w-75">
+              <input type="number" formControlName="height" id="height" class="form-control" />
+              <small *ngIf="userDataForm.controls['height'].dirty && userDataForm.hasError('required','height')"
+                class="text-danger ms-2">*Field is required</small>
+            </div>
+          </div>
+          <div class="mb-3 d-flex align-items-center justify-content-between">
+            <label for="gender" class="form-label">Gender:</label>
+            <div class="position-relative w-75">
+              <select formControlName="gender" id="gender" class="form-select">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <small *ngIf="userDataForm.controls['gender'].dirty && userDataForm.hasError('required','gender')"
+                class="text-danger ms-2">*Field is required</small>
+            </div>
+          </div>
+          <div class="mb-3 d-flex align-items-center justify-content-between">
+            <label for="age" class="form-label">Age:</label>
+            <div class="position-relative w-75">
+              <input type="number" formControlName="age" id="age" class="form-control" />
+              <small *ngIf="userDataForm.controls['age'].dirty && userDataForm.hasError('required','age')"
+                class="text-danger ms-2">*Field is required</small>
+            </div>
+          </div>
+          <div class="mb-3 d-flex align-items-center justify-content-between">
+            <label for="bodyFat" class="form-label">Body Fat (in percentage)</label>
+            <div class="position-relative w-75">
+              <input type="number" formControlName="bodyFat" id="bodyFat" class="form-control" />
+              <small *ngIf="userDataForm.controls['bodyFat'].dirty && userDataForm.hasError('required','bodyFat')"
+                class="text-danger ms-2">*Field is required</small>
+            </div>
+          </div>
+          <div class="mb-3 d-flex align-items-center justify-content-between">
+            <label for="bodyFat" class="form-label">Body Fat (in percentage)</label>
+            <div class="position-relative w-75">
+              <input type="number" formControlName="bodyFat" id="bodyFat" class="form-control" />
+              
+            </div>
+          </div>
+          <div class="mb-3 d-flex align-items-center justify-content-between">
+            <label for="activityLevel" class="form-label">Activity Level:</label>
+            <div class="position-relative w-75">
+              <select formControlName="activityLevel" id="activityLevel" class="form-select">
+                <option value="Desk job, light exercise">Desk job, light exercise</option>
+                <option value="Lightly active, workout 3-4 times/week">Lightly active, workout 3-4 times/week</option>
+                <option value="Active daily, frequent exercise">Active daily, frequent exercise</option>
+                <option value="Very Athletic">Very Athletic</option>
+                <option value="Extremely Athletic">Extremely Athletic</option>
+              </select>
+              <small
+                *ngIf="userDataForm.controls['activityLevel'].dirty && userDataForm.hasError('required','activityLevel')"
+                class="text-danger ms-2">*Field is required</small>
+            </div>
+          </div>
+          </div>
+        </form>
+        <div class="button-container mt-3">
+          <button class="btn btn-primary custom-button" (click)="submitUserData()">Edit</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  

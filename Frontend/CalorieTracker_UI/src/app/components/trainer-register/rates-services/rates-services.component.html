@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="content">
+    <h1>Powerful, Fast
+      Meal Planning To
+      Level Up Your Business</h1>
+    <p>Eat This Much Pro lets fitness and health professionals expand their services and provide even more value to their clients without eating into everyone’s busy schedule.</p>
+    <div class="button-container">
+      <button class="btn">Learn More</button>
+      <button class="btn">Contact Us</button>
+    </div>
+  </div>
+  <hr class="divider">
+  <div class="container-1">
+    <h2>Get A Plan That Fits With How You Work</h2>
+    <p>Control: If you prefer to create meal plan PDFs and send them to your clients.</p>
+    <p>Collaborate: If you prefer to get your clients more involved.</p>
+    <h2>Get A Plan That Fits With How You Work</h2>
+    <div class="mt-4 p-4 border rounded shadow">
+      <label for="clientsSelect">Number of Clients You Have:</label>
+      <div class="position-relative w-100">
+        <select class="form-control border" id="clientsSelect" (click)="logSelectedNumberOfClients()" [(ngModel)]="selectedNumberOfClients">
+          <!-- <option value="0">Select number of clients</option> -->
+          <option  *ngFor="let item of Plan" [value]="item.numberOfClients">{{ item.numberOfClients }}</option>
+        </select>
+      </div>
+    </div>
+    
+    <!-- <div class="mt-4 p-4 border rounded shadow">
+      <h3>Billing Frequency</h3>
+      <div class="mt-4 p-4 border rounded shadow">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="billingFrequencySwitch" (change)="toggleBillingFrequency()">
+          <label class="form-check-label" for="billingFrequencySwitch">{{ billingFrequencyText }}</label>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h1 class="card-title">Control</h1>
+            <h4 class="card-subtitle mb-2 text-muted">₹{{amountControl}} rupees /mo</h4>
+            <!-- <p class="card-text">${{quaterly}} billed quarterly</p> -->
+            <hr>
+            <p class="card-text">Custom branded emails and PDFs with built-in PDF editor</p><hr>
+            <p class="card-text">Fully customize each client's settings from their macros to
+               their food restrictions and then create meal plans specific to them</p><hr>
+            <p class="card-text">Create collections of recipes and specify meals to only use those recipes</p><hr>
+            <button (click)="paymentControl()" class="btn  btn1 position-relative w-100">Purchase</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h1 class="card-title">Collaborate</h1>
+            <h4 class="card-subtitle mb-2 text-muted">₹{{amountCollaborate}} rupees /mo</h4>
+            <hr>
+            <p class="card-text">Your clients can log in to the Eat This Much app and website (optional for each client).</p><hr>
+            <p class="card-text">Your clients can use ETM as a tracker, and you can view their logs.</p><hr>
+            <p class="card-text">Your branding is displayed to your clients on our web app and mobile apps.</p><hr>
+            <p class="card-text">Custom access permissions for each client.</p><hr>
+            <button class="btn btn1 position-relative w-100"  (click)="paymentCollaborate()">Purchase</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="note">
+          <p>Note: With the Control plan, your clients do not have the option to log in to the ETM app or website. You can share meal plans with them via email or PDF, and if you want to give them app access, you can upgrade to the Collaborate plan at any time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

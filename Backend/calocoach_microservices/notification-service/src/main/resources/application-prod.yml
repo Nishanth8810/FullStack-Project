@@ -1,0 +1,21 @@
+spring:
+  config:
+    import: optional:configserver:http://3.135.221.55:9296/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://18.217.98.177:8761/eureka/
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: jt-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: 'com.microservices.notificationservice.dtos.MealPlanDTO'
+            type:
+              mapping: 'com.microservices.mealplanservice.dto.mealDto.MealPlanDTO:com.microservices.notificationservice.dtos.MealPlanDTO'

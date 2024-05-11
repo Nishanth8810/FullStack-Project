@@ -1,0 +1,19 @@
+#spring:
+#  config:
+#    import: optional:configserver:http://3.135.221.55:9296
+##eureka:
+##  client:
+##    service-url:
+##      defaultZone: http://18.217.98.177:8761/eureka/
+#
+#
+#  cloud:
+#    gateway:
+#      default-filters:
+#         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+#      globalcors:
+#        corsConfigurations:
+#           '[/**]':
+#            allowedOrigins: "*"
+#            allowedMethods: "*"
+#            allowedHeaders: "*"

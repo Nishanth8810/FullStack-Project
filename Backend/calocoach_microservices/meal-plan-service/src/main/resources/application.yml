@@ -1,0 +1,20 @@
+#
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://18.217.98.177:8761/eureka/
+#    kafka:
+#      producer:
+#        bootstrap-servers: localhost:9092
+#        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#        value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#      properties:
+#        acks: 1
+#        spring:
+#          json:
+#            add:
+#              type:
+#                headers: false
+
+#server:
+#  port: 8087

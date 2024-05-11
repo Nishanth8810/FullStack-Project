@@ -1,0 +1,75 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+/assets/images
+
+src/assets/images/1c58122a-5616-47a9-8175-19586e38ceb2_33488_ldementhon_023ee1ed-1b44-4452-9ae9-f29a0cfbc54c.jpeg
+src/assets/images/1f80ca7f-7996-4cff-a4d0-def19dffb087_36662_tabitharwheeler_83d52001-a710-4e61-ad20-fb545347e831.jpg
+src/assets/images/9a0945f7-97b1-4c4c-913e-c2ad33fa2126_XRF_for_food_X_MET8000.518ac42faaa0be7917a503517dc405e0 - Copy.png
+src/assets/images/9bf8a23f-49dd-4feb-95bf-fbbe630df8b4_34567_erin_m_fb8d8fe4-e4bf-4c12-b7e2-70f30e9788b7.jpeg
+src/assets/images/93c0851f-70cd-4938-ba5c-ac9958bb923c_56852_tabitharwheeler_4efc3d4b-3a45-4fdb-a30d-56fb3ef8b57e.jpg
+src/assets/images/99bcb009-7543-483c-8b15-a45372dd287f_42621_elm333_b5bc89d3-32a1-4505-a38b-926d3a09777c.jpg
+src/assets/images/669f5e8f-6c4a-4c71-a180-7ab13d303b78_images.jpeg
+src/assets/images/956b3ad9-643d-4994-a11a-d71b94b6c2e6_34096_erin_m_f434d8cd-93af-4dde-86b5-11fa49b476b0.jpeg
+src/assets/images/69444267-7a6f-4224-8ab8-4da83b689490_XRF_for_food_X_MET8000.518ac42faaa0be7917a503517dc405e0 - Copy.png
+src/assets/images/b9583e8c-fa23-4c1e-9e79-9f969a67a602_56823_elm333_99e159c8-7230-4ef8-b270-05bd0bf2f549.jpg
+src/assets/images/bc2.jpeg
+src/assets/images/bafeb7ce-ae24-4144-a4a5-ea02cd6f7921_36663_jessejsherrill_5e9504b0-f3ad-4740-99c2-53773915faa6.jpg
+src/assets/images/bd4eb4cc-b3f0-4712-be9c-8ed5bb31c942_34096_erin_m_f434d8cd-93af-4dde-86b5-11fa49b476b0.jpeg
+src/assets/images/cfa9576d-2084-420c-8ba6-7c849d3cb176_XRF_for_food_X_MET8000.518ac42faaa0be7917a503517dc405e0.png
+src/assets/images/e481dded-eb4e-4487-9b91-e4876c3836d2_XRF_for_food_X_MET8000.518ac42faaa0be7917a503517dc405e0.png
+src/assets/images/f5fe496d-aec5-469b-b8b1-2fc0f072c4b1_XRF_for_food_X_MET8000.518ac42faaa0be7917a503517dc405e0 - Copy.png
+src/assets/images/f93b36fc-f822-4574-80a6-f987064165a0_XRF_for_food_X_MET8000.518ac42faaa0be7917a503517dc405e0 - Copy.png
+src/assets/images/fe3a2407-82d0-424f-8441-3be539e642ed_39304_elm333_4adab0ef-312f-4bde-9c00-da7b2599c253.jpg
+src/assets/images/XRF_for_food_X_MET8000.518ac42faaa0be7917a503517dc405e0 - Copy.png
+src/assets/images/rog-strix-x670e-f-gaming-wifi-image-main-600x600-1 (1).jpeg
+src/assets/images/zt-d40700h-10m-image-main-600x600_result.webp
+src/assets/images/zt-d40700h-10m-image02_result.webp
+src/assets/images/7a50947f-0983-4c6e-8082-b63ec8c92b62_36663_jessejsherrill_5e9504b0-f3ad-4740-99c2-53773915faa6.jpg
+src/assets/images/9b209860-c03d-4414-9d7e-87829b716204_39533_erin_m_5ba9f81a-bd3e-47fc-872b-b553372bcf12.jpeg
+src/assets/images/162b2399-95c8-487c-bc1d-294580bc2aef_39304_elm333_4adab0ef-312f-4bde-9c00-da7b2599c253.jpg
+src/assets/images/b569b144-43d9-473d-8558-40ac23c51f56_Screenshot 2023-10-05 143340.png
+src/assets/svg/285645_user_icon.png
+src/assets/images/0045784e-9d37-41b7-973f-6a98ab9c8a4f_Screenshot 2024-01-15 203858.png
+src/assets/images/b97bf50f-86ad-487f-a37f-fd7304e713d2_Screenshot 2024-02-23 210436.png
+src/assets/images/a90c60d4-9617-47d8-a9d6-d46b262082ad_trainerimage.avif
+src/assets/images/d5d8a712-9987-4a3c-bec9-3251d69d64cd_userimage.jpeg

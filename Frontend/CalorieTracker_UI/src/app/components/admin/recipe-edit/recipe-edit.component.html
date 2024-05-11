@@ -1,0 +1,104 @@
+
+<div class="container ">
+  <div class="card-body d-flex flex-column">
+    <div class="mb-3 d-flex justify-content-end align-items-center">
+      <button class="btn btn-primary button-56" (click)="cancel()">Cancel</button>
+    </div>
+    <h2 class="card-title mt-0"> Edit Recipe</h2>
+    <form [formGroup]="recipeForm" class="p-4 border rounded shadow flex-grow-1">
+      <div class="mb-3 d-flex align-items-center justify-content-between">
+        <label for="name" class="form-label">Name</label>
+        <div class="position-relative w-50">
+          <input type="text" formControlName="name" id="name" placeholder="Enter name" class="form-control" />
+          <small *ngIf="recipeForm.controls['name'].dirty && recipeForm.hasError('required','name')" class="text-danger ms-2">*Field is required</small>
+        </div>
+      </div>
+      <hr class="w-100 my-4">
+      <div class="mb-3 d-flex align-items-center justify-content-between">
+        <label for="prepTimeMinutes" class="form-label">Preparation Time (in minutes)</label>
+        <div class="position-relative w-50">
+          <input type="number" formControlName="prepTimeMinutes" id="prepTimeMinutes" class="form-control" />
+          <small *ngIf="recipeForm.controls['prepTimeMinutes'].dirty && recipeForm.hasError('required','prepTimeMinutes')" class="text-danger ms-2">*Field is required</small>
+        </div>
+      </div>
+      <hr class="w-100 my-4">
+      <div class="mb-3 d-flex align-items-center justify-content-between">
+        <label for="cookTimeMinutes" class="form-label">Cooking Time (in minutes)</label>
+        <div class="position-relative w-50">
+          <input type="number" formControlName="cookTimeMinutes" id="cookTimeMinutes" class="form-control" />
+          <small *ngIf="recipeForm.controls['cookTimeMinutes'].dirty && recipeForm.hasError('required','cookTimeMinutes')" class="text-danger ms-2">*Field is required</small>
+        </div>
+      </div>
+      <hr class="w-100 my-4">
+      <div class="mb-3 d-flex align-items-center justify-content-between">
+        <label for="image" class="form-label">Image</label>
+        <div class="position-relative w-25">
+          <input type="file"  id="image" class="form-control" (change)="onImageChange($event)" />
+          <small *ngIf="recipeForm.get('image')?.dirty && recipeForm.hasError('required','image')" class="text-danger ms-2">*Image is required</small>
+        </div>
+      </div>
+      <hr class="w-100 my-4">
+      <div class="mb-3 d-flex align-items-center justify-content-between">
+        <label for="ingredients" class="form-label">Ingredients</label>
+        <div class="position-relative w-75">
+          <small *ngIf="ingredientFiled" class="text-danger ms-2">*Filed is required</small>
+          <textarea #ingredientInput class="form-control mb-2" placeholder="Add Ingredient"></textarea> 
+          <div *ngFor="let ingredient of ingredients; let i = index" class="mb-2">
+            <small>{{ingredient}}</small>
+          </div>
+          <button class="btn btn-secondary" (click)="addIngredient(ingredientInput.value)">Add Ingredient</button>
+        </div>
+      </div>
+      <hr class="w-100 my-4">
+      <div class="mb-3 d-flex align-items-center justify-content-between">
+        <label for="directions" class="form-label">Directions</label>
+        <div class="position-relative w-75">
+          <small *ngIf="directionfield" class="text-danger ms-2">*Filed is required</small>
+          <textarea #directionInput class="form-control mb-2" placeholder="Add Direction"></textarea>
+          <div *ngFor="let direction of directions; let i = index" class="mb-2">
+           <small>STEP:{{ i + 1 }} {{direction}}</small>
+          </div>
+          <button class="btn btn-secondary" (click)="addDirection(directionInput.value)">Add Direction</button>
+        </div>
+      </div>
+      <hr class="w-100 my-4">
+
+      <div class="mb-3 d-flex flex-wrap align-items-center">
+        <div class="me-3">
+          <h4><strong>Nutritional Values</strong></h4>
+        </div>
+        <div class="me-4">
+          <label for="calories" class="form-label">Calories (kcal)</label>
+          <input type="number" formControlName="calories" id="calories" class="form-control" placeholder="Enter Calories">
+          <small *ngIf="recipeForm.get('calories')?.dirty && recipeForm.hasError('required','calories')" class="text-danger ms-2">*Filed is required</small>
+
+        </div>
+
+        <div class="me-4">
+          <label for="totalCarbohydrate" class="form-label">Total Carbohydrate (g)</label>
+          <input type="number" formControlName="carbs" id="totalCarbohydrate" class="form-control" placeholder="Enter Total Carbohydrate">
+          <small *ngIf="recipeForm.get('carbs')?.dirty && recipeForm.hasError('required','carbs')" class="text-danger ms-2">*Filed is required</small>
+
+        </div>
+        <div class="me-4">
+          <label for="fats" class="form-label">Fats (g)</label>
+          <input type="number" formControlName="fats" id="fats" class="form-control" placeholder="Enter Fats">
+          <small *ngIf="recipeForm.get('fats')?.dirty && recipeForm.hasError('required','fats')" class="text-danger ms-2">*Field is required</small>
+
+        </div>
+        <div class="me-4">
+          <label for="proteins" class="form-label">Proteins (g)</label>
+          <input type="number" formControlName="proteins" id="proteins" class="form-control" placeholder="Enter Proteins">
+          <small *ngIf="recipeForm.get('proteins')?.dirty && recipeForm.hasError('required','proteins')" class="text-danger ms-2">*Field is required</small>
+
+        </div>
+      </div>
+      <hr class="w-100 my-4">
+      <div class="button-container">
+        <button class="btn btn-primary button-56" (click)="submitRecipe()">Add Recipe</button>
+      </div>
+     <!-- Add more fields as needed -->
+    </form>
+   
+  </div>
+</div>

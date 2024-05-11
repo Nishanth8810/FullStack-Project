@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5-active" routerLink="/user-dashboard">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+            Home
+          </button>
+          <button class="button-5" routerLink="/meal-plan-list">
+            <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>
+            Meal plans</button>
+          <button class="button-5" routerLink="/recipe-discover"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>
+            Discover Recipe</button>
+          <button class="button-5" routerLink="/trainer-discover">
+            <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+            Trainers</button>
+          <button class="button-5" routerLink="/savedRecipe">
+            <i class="fa-solid fa-bookmark" style="margin-right: 5px;"></i>
+            Saved Recipe</button>
+          <button class="button-5" routerLink="/physical-stats">
+            <i class="fa-solid fa-chart-simple" style="margin-right: 5px;"></i>
+            Physical Stats</button>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <app-navbar-user></app-navbar-user>
+      <div class="image-with-quotes">
+        <img src="https://res.cloudinary.com/ddgr1kuzs/image/upload/v1715167787/userimages/quote-Healthy-Eating_jgll5l.jpg">
+        <blockquote>
+          "Your health is an investment, not an expense."
+        </blockquote>
+      </div>
+      <div class="popular-trainers">
+        <h2>Popular Trainers</h2>
+        <div class="row">
+          <div class="col-md-4" *ngFor="let trainer of trainers">
+            <div class="trainer-card">
+              <img [src]="trainer.imageUrl" alt="{{ trainer.name }}">
+              <h3>{{ trainer.firstName }} {{ trainer.lastName }}</h3>
+              <p>{{ trainer.email }}</p>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div>
+  <app-header></app-header>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2"> 
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5" routerLink="/admin" >Home</button>  
+          <button class="button-5" routerLink="/user-view">Users</button>  
+          <button class="button-5" routerLink="/admin-trainer-view">Trainers</button>  
+          <button class="button-5" routerLink="/recipe-add">Add custom Recipe</button>  
+          <button class="button-5-active" routerLink="/recipe-manage" >Manage recipe</button>  
+          <button class="button-5" routerLink="/plan-management" >Manage plans</button>  
+          <button class="button-5">------</button>  
+        </ul>
+      </div>      
+    </div>
+   
+    <div class="col-md-10">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ngx-spinner 
+          bdColor="white" color="rgb(254, 106, 65)"  
+          [fullScreen]=false  type="ball-scale-multiple"> 
+          <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+        </ngx-spinner>
+          <tr *ngFor="let recipe of recipes">
+            <td>{{ recipe.name }}</td>
+            <td><img [src]="recipe.imageUrl" alt="{{ recipe.name }}"></td>
+            <td>
+              <button class="button-611" *ngIf="recipe.unList===0" (click)="unlistRecipe(recipe.id)">Unlist</button>
+              <button *ngIf="recipe.unList===1" class="button-611" (click)="listRecipe(recipe.id)">list</button>
+            </td>
+            <td><button class="button-61" [routerLink]="['/recipe-edit', recipe.id]">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+</div>
+</div>

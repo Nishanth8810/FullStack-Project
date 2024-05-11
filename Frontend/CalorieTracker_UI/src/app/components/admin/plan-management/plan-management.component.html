@@ -1,0 +1,109 @@
+<div>
+  <app-header></app-header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2"> 
+        <div class="sidebar custom-sidebar">
+          <ul>
+            <button class="button-5" routerLink="/admin">Home</button>  
+            <button class="button-5" routerLink="/user-view">Users</button>  
+            <button class="button-5" routerLink="/admin-trainer-view">Trainers</button>  
+            <button class="button-5" routerLink="/recipe-add">Add custom Recipe</button>  
+            <button class="button-5" routerLink="/recipe-manage">Manage recipe</button>  
+            <button class="button-5-active" routerLink="/plan-management">Manage plans</button>  
+            <button class="button-5">------</button>  
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="mb-3 d-flex justify-content-end align-items-center">
+          <button class="btn btn-primary button-90" id="forgot" data-bs-toggle="modal" data-bs-target="#exampleModal">Add new Plan</button>
+        </div>
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Plan Name</th>
+              <th scope="col">Amount(Control)</th>
+              <th scope="col">Amount(Collaborate)</th>
+              <th scope="col">Number Of clients</th>
+              <th scope="col">Description</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          <ngx-spinner 
+            bdColor="white" color="rgb(254, 106, 65)"  
+            [fullScreen]=false  type="ball-scale-multiple"> 
+            <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+          </ngx-spinner>
+            <tr *ngFor="let plan of plans " >
+              <td>{{ plan.planName }}</td>
+              <td>{{ plan.amountControl}}</td>
+              <td>{{ plan.amountCollaborate }}</td>
+              <td>{{ plan.numberOfClients }}</td>
+              <td>{{ plan.description }}</td>
+              <td>
+                <button class="button-611" *ngIf="plan.list===1" (click)="unListPlan(plan.id)">Unlist</button>
+                <button class="button-611" *ngIf="plan.list===0" (click)="listPlan(plan.id)">List</button>
+              </td>
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <span style="font-size: 25px; font-weight:700">Add a new plan</span><br>
+          <small>Please add a new plan</small>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="planForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div class="form-group pt-3">
+            <div class="input-field">
+              <input type="text" class="form-control" formControlName="planName" placeholder="Enter Plan Name" name="planName" >
+              <small *ngIf="planForm.controls['planName'].dirty && planForm.hasError('required','planName')" class="text-danger">*Filed is required</small>
+            </div>
+          </div>
+          <div class="form-group pt-3">
+            <div class="input-field">
+              <input type="number" class="form-control"  formControlName="amountControl" id="amount" placeholder="Enter Amount (control plan)" name="amount" >
+              <small *ngIf="planForm.controls['amountControl'].dirty && planForm.hasError('required','amountControl')" class="text-danger">*Filed is required</small>
+            </div>
+          </div>
+          <div class="form-group pt-3">
+            <div class="input-field">
+              <input type="number" class="form-control"  formControlName="amountCollaborate" id="amount" placeholder="Enter Amount (Collaborate)" name="amount" >
+              <small *ngIf="planForm.controls['amountCollaborate'].dirty && planForm.hasError('required','amountCollaborate')" class="text-danger">*Filed is required</small>
+            </div>
+          </div>
+          <div class="form-group pt-3">
+            <div class="input-field">
+              <input type="number" class="form-control"  formControlName="numberOfClients"  placeholder="Enter number of clients" >
+              <small *ngIf="planForm.controls['numberOfClients'].dirty && planForm.hasError('required','numberOfClients')" class="text-danger">*Filed is required</small>
+            </div>
+          </div>
+          <div class="form-group pt-3">
+            <div class="input-field">
+              <input type="text" class="form-control" formControlName="description" placeholder="Enter Description" name="description" >
+              <small *ngIf="planForm.controls['description'].dirty && planForm.hasError('required','description')" class="text-danger">*Filed is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="closeBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add plan</button>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</div>

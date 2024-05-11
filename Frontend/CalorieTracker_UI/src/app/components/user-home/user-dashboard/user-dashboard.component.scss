@@ -1,0 +1,36 @@
+.image-with-quotes {
+  margin-top: 90px; /* Adds top margin to the image */
+  text-align: center; /* Centers the image and quote */
+}
+
+.image-with-quotes img {
+  max-width: 90%; /* Ensures the image fits within its container */
+  height: 300px; /* Sets the height of the image */
+  width: 90%; /* Sets the width of the image to fill its container */
+  object-fit: cover; /* Ensures the image covers the entire container */
+  border-radius: 10px; /* Adds rounded corners to the image */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow to the image */
+}
+
+
+.image-with-quotes blockquote {
+  margin-top: 20px; /* Adds space between the image and the quote */
+  font-size: 18px; /* Adjusts the font size of the quote */
+  font-style: italic; /* Makes the quote italic */
+  color: #333; /* Sets the color of the quote text */
+}
+
+/* Optional: Hover effect for the image */
+.image-with-quotes img:hover {
+  transform: scale(1.05); /* Increases the size of the image on hover */
+  transition: transform 0.3s ease; /* Adds a smooth transition effect */
+}
+.trainer-card img{
+  border: 1px solid #ddd; /* Add a 1px solid border with color #ddd */
+  padding: 15px; /* Add padding to create space between content and border */
+  margin-bottom: 20px; /* Add margin to create space between cards */
+  max-width: 40%; /* Ensures the image fits within its container */
+  height: 200px; /* Sets the height of the image */
+  width: 40%; 
+  z-index: 0;
+}

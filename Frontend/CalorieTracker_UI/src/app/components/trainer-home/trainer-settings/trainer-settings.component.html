@@ -1,0 +1,161 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar custom-sidebar">
+        <ul>
+          <button class="button-5" routerLink="/trainer-dashboard">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i> 
+            Home</button>
+          <button class="button-5" routerLink="/manage-clients">
+            <i class="fa-solid fa-users" style="margin-right: 5px;"></i>
+            Manage Clients</button>
+          <button class="button-5" routerLink="/recipe-add">
+            <i class="fa-solid fa-circle-plus" style="margin-right: 5px;" ></i>
+            Add custom recipe</button>
+          <button class="button-5" routerLink="/meal-plan">
+            <i class="fa-solid fa-calendar-check" style="margin-right: 5px;" ></i>
+            Meal plans</button>
+          <button class="button-5" routerLink="/login">
+            <i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i>
+            Logout</button>
+          <button class="button-5-active" routerLink="/trainer-setting">
+            <i class="fa-solid fa-gear"  style="margin-right: 5px;"></i>
+            Settings</button>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <ngx-spinner 
+      bdColor="transparent" color="rgb(254, 106, 65)"  
+      [fullScreen]=false  type="ball-scale-multiple"> 
+      <p style="font-size: 20px; color: rgb(254, 106, 65)">Loading...</p>
+    </ngx-spinner>
+      <div class="containe">
+        <div class="card">
+          <div class="containe-head">
+            <h4 class="logo">CalorieCoach</h4>
+          </div>
+          <div class="card">
+            <form [formGroup]="userDataForm" >
+            <div class="card-body">
+              <h2 class="card-title">Information</h2>
+              <div class="head mt-4 p-4 border rounded shadow">
+                <div class="pp">
+                  <img [src]="imgUrl" alt="{{ imgUrl }}">
+                  <div>
+                  <label for="image" class="custom-file-upload">
+                   Change Profile Image
+                    <input type="file" id="image" style="display: none;" (change)="onImageChange($event)" />
+                  </label>
+                </div>
+                </div>
+                 <div>
+                  <div class="mb-2 d-flex align-items-center justify-content-between">
+                    <label for="weight" class="form-label">First Name</label>
+                    <div class="position-relative w-100">
+                      <input type="text" formControlName="firstname" id="firstname" class="form-control" />
+                      <small *ngIf="userDataForm.controls['firstname'].dirty && userDataForm.hasError('required','firstname')"
+                        class="text-danger ms-2">*Field is required</small>
+                    </div>
+                  </div>
+                  <div class="mb-2 d-flex align-items-center justify-content-around">
+                    <label for="lastname" class="form-label">LastName</label>
+                    <div class="position-relative w-100">
+                      <input type="text" formControlName="lastname" id="lastname" class="form-control" />
+                      <small *ngIf="userDataForm.controls['lastname'].dirty && userDataForm.hasError('required','lastname')"
+                        class="text-danger ms-2">*Field is required</small>
+                    </div>
+                  </div>
+                </div> 
+                </div>
+              </div>
+      
+                <div class="mt-4 p-4 border rounded shadow">
+                <div class="mb-3 d-flex align-items-center justify-content-between">
+                  <label for="weight" class="form-label">Certification</label>
+                  <div class="position-relative w-75">
+                    <input type="text" formControlName="certification" id="certification" class="form-control" />
+                    <!-- <small *ngIf="userDataForm.controls['certification'].dirty && userDataForm.hasError('required','certification')"
+                      class="text-danger ms-2">*Field is required</small> -->
+                  </div>
+                </div>
+                <div class="mb-3 d-flex align-items-center justify-content-between">
+                  <label for="specializations" class="form-label">Specializations</label>
+                  <div class="position-relative w-75">
+                    <select formControlName="specializations" id="specializations" class="form-control border">
+                      <option value="">Select Specialization</option>
+                      <option value="Weight Loss">Weight Loss</option>
+                      <option value="Strength Training">Strength Training</option>
+                      <option value="Yoga">Yoga</option>
+                      <option value="Cardiovascular Conditioning">Cardiovascular Conditioning</option>
+                    </select>
+                    <small
+                      *ngIf="userDataForm.controls['specializations'].dirty && userDataForm.hasError('required','specializations')"
+                      class="text-danger ms-2">*Field is required</small>
+                  </div>
+                </div>
+                <div class="mb-3 d-flex align-items-center justify-content-between">
+                  <label for="height" class="form-label">Description</label>
+                  <div class="position-relative w-75">
+                    <input type="text" formControlName="description" id="description" class="form-control" />
+                    <small *ngIf="userDataForm.controls['description'].dirty && userDataForm.hasError('required','description')"
+                      class="text-danger ms-2">*Field is required</small>
+                  </div>
+                </div>
+                <div class="mb-3 d-flex align-items-center justify-content-between">
+                  <label for="schedule" class="form-label">Schedule</label>
+                  <div class="position-relative w-75">
+                    <select formControlName="schedule" id="schedule" class="form-control border">
+                      <option value="">Select Schedule</option>
+                      <option value="Morning">Morning</option>
+                      <option value="Afternoon">Afternoon</option>
+                      <option value="Evening">Evening</option>
+                      <!-- Add more options as needed -->
+                    </select>
+                    <small *ngIf="userDataForm.controls['schedule'].dirty && userDataForm.hasError('required','schedule')"
+                    class="text-danger ms-2">*Field is required</small>
+                  </div>
+                  </div>
+                  <div class="mb-3 d-flex align-items-center justify-content-between">
+                    <label for="preferredCommunication" class="form-label">Preferred Communication</label>
+                    <div class="position-relative w-75">
+                      <select formControlName="preferredCommunication" id="preferredCommunication" class="form-control border">
+                        <option value="">Select Preferred Communication</option>
+                        <option value="Email">Email</option>
+                        <option value="Phone Call">Phone Call</option>
+                        <option value="Text Message">Text Message</option>
+                        <!-- Add more options as needed -->
+                      </select>
+                      <small
+                        *ngIf="userDataForm.controls['preferredCommunication'].dirty && userDataForm.hasError('required','preferredCommunication')"
+                        class="text-danger ms-2">*Field is required</small>
+                    </div>
+                </div>
+                <div class="mb-3 d-flex align-items-center justify-content-between">
+                  <label for="age" class="form-label">YearsOfExperience</label>
+                  <div class="position-relative w-75">
+                    <input type="number" formControlName="yearsOfExperience" id="yearsOfExperience" class="form-control" />
+                    <small *ngIf="userDataForm.controls['yearsOfExperience'].dirty && userDataForm.hasError('required','yearsOfExperience')"
+                      class="text-danger ms-2">*Field is required</small>
+                  </div>
+                </div>
+                <div class="mb-3 d-flex align-items-center justify-content-between">
+                  <label for="bodyFat" class="form-label">PreviousEmployment</label>
+                  <div class="position-relative w-75">
+                    <input type="text" formControlName="previousEmployment" id="previousEmployment" class="form-control" />
+                    <small *ngIf="userDataForm.controls['previousEmployment'].dirty && userDataForm.hasError('required','previousEmployment')"
+                      class="text-danger ms-2">*Field is required</small>
+                  </div>
+                </div>
+               
+                </div>
+              </form>
+              <div class="button-container mt-3">
+                <button class="btn btn-primary custom-button" (click)="submitUserData()">Edit</button>
+              </div>
+            </div>
+          </div>
+          </div>
+     </div>
+     </div>
+     </div>
